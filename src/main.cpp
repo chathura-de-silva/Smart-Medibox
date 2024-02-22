@@ -15,25 +15,6 @@ int hours = 0;
 int minutes = 0;
 int seconds = 0;
 
-void setup()
-{
-    Serial.begin(9600);
-    if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESSS))
-    {
-        Serial.println(F("SSD1306 Allocation Failed Succesfully!"));
-        for (;;)
-            ;
-    }
-    display.display();
-    delay(2000);
-    display.clearDisplay();
-    println("Welcome to Medibox!",10,20,2);
-    display.clearDisplay();
-void loop()
-{   
-    print_time_now();
-}
-
 void println(String text, int column, int row, int text_size)
 {
     display.setTextSize(text_size);
@@ -53,3 +34,26 @@ void print_time_now()
     println(":", 80, 0, 2);
     println(String(seconds), 90, 0, 2);
 }
+
+
+void setup()
+{
+    Serial.begin(9600);
+    if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESSS))
+    {
+        Serial.println(F("SSD1306 Allocation Failed Succesfully!"));
+        for (;;)
+            ;
+    }
+    display.display();
+    delay(2000);
+    display.clearDisplay();
+    println("Welcome to Medibox!",10,20,2);
+    display.clearDisplay();
+}   
+
+void loop()
+{   
+    print_time_now();
+}
+
