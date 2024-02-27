@@ -2,6 +2,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <DHTesp.h>
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -14,8 +15,10 @@
 #define PB_OK 32
 #define PB_UP 33
 #define PB_DOWN 35
+#define DHTPIN 12
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+DHTesp dhtSensor;
 
 int days = 0;
 int hours = 0;
@@ -164,6 +167,189 @@ int wait_for_button_press()
     }
 }
 
+void set_time()
+{
+    int temp_hour = hours;
+
+    while (true)
+    {
+        display.clearDisplay();
+        println("Enter hour: " + String(temp_hour), 0, 0, 2);
+
+        int pressed = wait_for_button_press();
+
+        if (pressed == PB_UP)
+        {
+            delay(200);
+            temp_hour++;
+            temp_hour = temp_hour % 24;
+        }
+        else if (pressed == PB_DOWN)
+        {
+            delay(200);
+            temp_hour--;
+            temp_hour = temp_hour % 24;
+            if (temp_hour < 0)
+            {
+                temp_hour = 23;
+            }
+        }
+        else if (pressed == PB_OK)
+        {
+            delay(200);
+            hours = temp_hour;
+            break;
+        }
+        else if (pressed == PB_CANCEL)
+        {
+            delay(200);
+            break;
+        }
+    }
+
+    int temp_minute = minutes;
+
+    while (true)
+    {
+        display.clearDisplay();
+        println("Enter minute: " + String(temp_minute), 0, 0, 2);
+
+        int pressed = wait_for_button_press();
+
+        if (pressed == PB_UP)
+        {
+            delay(200);
+            temp_minute++;
+            temp_minute = temp_minute % 60;
+        }
+        else if (pressed == PB_DOWN)
+        {
+            delay(200);
+            temp_minute--;
+            temp_minute = temp_minute % 60;
+            if (temp_minute < 0)
+            {
+                temp_minute = 59;
+            }
+        }
+        else if (pressed == PB_OK)
+        {
+            delay(200);
+            minutes = temp_minute;
+            break;
+        }
+        else if (pressed == PB_CANCEL)
+        {
+            delay(200);
+            break;
+        }
+    }
+    display.clearDisplay();
+    println("Time is set", 0, 0, 2);
+    delay(1000);
+}
+
+void set_alarm(int alarm)
+{
+    int temp_hour = alarm_hours[alarm];
+
+    while (true)
+    {
+        display.clearDisplay();
+        println("Enter hour: " + String(temp_hour), 0, 0, 2);
+
+        int pressed = wait_for_button_press();
+
+        if (pressed == PB_UP)
+        {
+            delay(200);
+            temp_hour++;
+            temp_hour = temp_hour % 24;
+        }
+        else if (pressed == PB_DOWN)
+        {
+            delay(200);
+            temp_hour--;
+            temp_hour = temp_hour % 24;
+            if (temp_hour < 0)
+            {
+                temp_hour = 23;
+            }
+        }
+        else if (pressed == PB_OK)
+        {
+            delay(200);
+            alarm_hours[alarm] = temp_hour;
+            break;
+        }
+        else if (pressed == PB_CANCEL)
+        {
+            delay(200);
+            break;
+        }
+    }
+
+    int temp_minute = alarm_minutes[alarm];
+
+    while (true)
+    {
+        display.clearDisplay();
+        println("Enter minute: " + String(temp_minute), 0, 0, 2);
+
+        int pressed = wait_for_button_press();
+
+        if (pressed == PB_UP)
+        {
+            delay(200);
+            temp_minute++;
+            temp_minute = temp_minute % 60;
+        }
+        else if (pressed == PB_DOWN)
+        {
+            delay(200);
+            temp_minute--;
+            temp_minute = temp_minute % 60;
+            if (temp_minute < 0)
+            {
+                temp_minute = 59;
+            }
+        }
+        else if (pressed == PB_OK)
+        {
+            delay(200);
+            alarm_minutes[alarm] = temp_minute;
+            break;
+        }
+        else if (pressed == PB_CANCEL)
+        {
+            delay(200);
+            break;
+        }
+    }
+    display.clearDisplay();
+    println("Alarm " + String(alarm) + "is set", 0, 0, 2);
+    delay(1000);
+}
+
+void run_mode(int mode)
+{
+    if (mode == 0)
+    {
+        set_time();
+    }
+    else if (mode == 1 || mode == 2)
+    {
+        set_alarm(mode - 1); // Notice that the alarm number is equal to the mode number -1.
+    }
+    else if (mode == 3)
+    {
+        alarm_enabled = false;
+        display.clearDisplay();
+        println("Alarms disabled!", 0, 0, 2);
+        delay(1000);
+    }
+}
+
 void go_to_menu()
 {
     while (digitalRead(PB_CANCEL) == HIGH)
@@ -179,23 +365,55 @@ void go_to_menu()
             current_mode++;
             current_mode = current_mode % max_modes;
         }
-        else if (pressed == PB_DOWN){
+        else if (pressed == PB_DOWN)
+        {
             delay(200);
             current_mode--;
             current_mode = current_mode % max_modes;
-            if (current_mode < 0){
-                current_mode = max_modes-1;
+            if (current_mode < 0)
+            {
+                current_mode = max_modes - 1;
             }
         }
-        else if (pressed == PB_OK){
+        else if (pressed == PB_OK)
+        {
             delay(200);
-            // run_mode(current_mode);
-            Serial.println(current_mode); //Note that the 
+            run_mode(current_mode);
+            // Serial.println(current_mode); //Note that the
         }
-        else if (pressed == PB_CANCEL){
+        else if (pressed == PB_CANCEL)
+        {
             delay(200);
             break;
         }
+    }
+}
+
+void check_temp()
+{
+    TempAndHumidity data = dhtSensor.getTempAndHumidity();
+    Serial.println("Temparature : " + String(data.temperature));
+    // for temperature
+    if (data.temperature > 35)
+    {
+        display.clearDisplay();
+        println("TEMP HIGH", 0, 40, 1);
+    }
+    else if (data.temperature > 25)
+    {
+        display.clearDisplay();
+        println("TEMP LOW", 0, 40, 1);
+    }
+    // for humidity
+     if (data.humidity > 40)
+    {
+        display.clearDisplay();
+        println("HUMIDITY HIGH", 0, 50, 1);
+    }
+    else if (data.humidity > 20)
+    {
+        display.clearDisplay();
+        println("THUMIDITY LOW", 0, 50, 1);
     }
 }
 
@@ -207,7 +425,11 @@ void setup()
     pinMode(PB_DOWN, INPUT);
     pinMode(PB_OK, INPUT);
     pinMode(PB_UP, INPUT);
+
+    dhtSensor.setup(DHTPIN, DHTesp::DHT22);
+
     Serial.begin(9600);
+
     if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESSS))
     {
         Serial.println(F("SSD1306 Allocation Failed Succesfully!"));
@@ -230,4 +452,5 @@ void loop()
         delay(200);
         go_to_menu();
     }
+    check_temp();
 }
