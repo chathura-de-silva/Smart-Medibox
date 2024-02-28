@@ -29,6 +29,8 @@ int days = 0;
 int hours = 0;
 int minutes = 0;
 int seconds = 0;
+int months =0;
+int years = 0;
 
 int utc_offset = 19800; //default to Sri Lanka's offset.
 
@@ -51,8 +53,8 @@ int C_H = 523;
 int notes[] = {C, D, E, F, G, A, B, C_H};
 
 int current_mode = 0;
-int max_modes = 6;
-String modes[] = {"1 - Set Time", "2 - Set Alarm 1", "3 - Set Alarm 2", "4 - Set Alarm 2", "5 - Disable Alarms", "6 - Set Time Zone"};
+int max_modes = 5;
+String modes[] = {"1 - Set Alarm 1", "2 - Set Alarm 2", "3 - Set Alarm 3", "4 - Disable Alarms", "5 - Set Time Zone"};
 
 void println(String text, int column, int row, int text_size)
 {
@@ -76,14 +78,14 @@ void print_time_now()
     //Instead of above lines, the single line below is added to avoid flickering and display time as a whole in once.
     println(String(hours)+":"+ String(minutes) +":"+String(seconds), 0,0,2);
     display.fillRect(0, 16, 128, 30, BLACK);
-    println(String(days), 0, 22, 1);
+    println(String(days)+"."+ String(months) +"."+String(years), 0, 22, 1);
 }
 
 void update_time()
 {
     struct tm timeinfo;
     getLocalTime(&timeinfo);
-
+    
     char  timeHour[3];
     strftime(timeHour,3,"%H", &timeinfo);
     hours = atoi(timeHour);
@@ -99,6 +101,14 @@ void update_time()
     char  timeDay[3];
     strftime(timeDay,3,"%d", &timeinfo);
     days = atoi(timeDay);
+
+    char  timeMonth[3];
+    strftime(timeMonth,3,"%m", &timeinfo);
+    months = atoi(timeMonth);
+
+    char  timeYear[5];
+    strftime(timeYear,5,"%Y", &timeinfo);
+    years = atoi(timeYear);
 }
 
 void ring_alarm()
@@ -173,90 +183,7 @@ int wait_for_button_press()
             delay(200);
             return PB_CANCEL;
         }
-        update_time();
     }
-}
-
-void set_time()
-{
-    int temp_hour = hours;
-
-    while (true)
-    {
-        display.clearDisplay();
-        println("Enter hour: " + String(temp_hour), 0, 0, 2);
-
-        int pressed = wait_for_button_press();
-
-        if (pressed == PB_UP)
-        {
-            delay(200);
-            temp_hour++;
-            temp_hour = temp_hour % 24;
-        }
-        else if (pressed == PB_DOWN)
-        {
-            delay(200);
-            temp_hour--;
-            temp_hour = temp_hour % 24;
-            if (temp_hour < 0)
-            {
-                temp_hour = 23;
-            }
-        }
-        else if (pressed == PB_OK)
-        {
-            delay(200);
-            hours = temp_hour;
-            break;
-        }
-        else if (pressed == PB_CANCEL)
-        {
-            delay(200);
-            break;
-        }
-    }
-
-    int temp_minute = minutes;
-
-    while (true)
-    {
-        display.clearDisplay();
-        println("Enter minute: " + String(temp_minute), 0, 0, 2);
-
-        int pressed = wait_for_button_press();
-
-        if (pressed == PB_UP)
-        {
-            delay(200);
-            temp_minute++;
-            temp_minute = temp_minute % 60;
-        }
-        else if (pressed == PB_DOWN)
-        {
-            delay(200);
-            temp_minute--;
-            temp_minute = temp_minute % 60;
-            if (temp_minute < 0)
-            {
-                temp_minute = 59;
-            }
-        }
-        else if (pressed == PB_OK)
-        {
-            delay(200);
-            minutes = temp_minute;
-            break;
-        }
-        else if (pressed == PB_CANCEL)
-        {
-            delay(200);
-            break;
-        }
-    }
-    display.clearDisplay();
-    println("Time is set", 0, 0, 2);
-    delay(1000);
 }
 
 void set_alarm(int alarm)
@@ -426,22 +353,18 @@ void set_time_zone()
 
 void run_mode(int mode)
 {
-    if (mode == 0)
-    {
-        set_time();
-    }
-    else if (mode == 1 || mode == 2 || mode ==3)
+    if (mode == 0 || mode == 1 || mode ==2)
     {
         set_alarm(mode - 1); // Notice that the alarm number is equal to the mode number -1.
     }
-    else if (mode == 4)
+    else if (mode == 3)
     {
         alarm_enabled = false;
         display.clearDisplay();
         println("Alarms disabled!", 0, 0, 2);
         delay(1000);
     }
-    else if (mode  == 5){
+    else if (mode  == 4){
         set_time_zone();
     }
 }
@@ -546,7 +469,6 @@ void setup()
     delay(1000);
 
     configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
-
     display.clearDisplay();
     println("Welcome to Medibox!", 10, 20, 2);
     delay(1000); // added additional delay to display the above message.
