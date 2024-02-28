@@ -128,7 +128,7 @@ void update_time_with_check_alarm()
     {
         for (int i = 0; i < n_alarms; i++)
         {
-            // Serial.println("hours : " +  String(timeinfo.tm_hour) + " Alram hours : " + String(alarm_hours[i])); //for debugging.
+            Serial.println("hours : " +  String(timeinfo.tm_hour) + " Alram hours : " + String(alarm_hours[i])); //for debugging.
             if (alarm_triggered[i] == false && alarm_hours[i] == timeinfo.tm_hour && alarm_minutes[i] == timeinfo.tm_min)
             {
                 ring_alarm();
@@ -335,7 +335,7 @@ void run_mode(int mode)
 {
     if (mode == 0 || mode == 1 || mode ==2)
     {
-        set_alarm(mode - 1); // Notice that the alarm number is equal to the mode number -1.
+        set_alarm(mode); // Notice that the alarm number is equal to the mode number -1.
     }
     else if (mode == 3)
     {
