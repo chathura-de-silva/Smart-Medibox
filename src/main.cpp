@@ -18,20 +18,20 @@
 #define PB_UP 33
 #define PB_DOWN 35
 #define DHTPIN 4
-#define DHTTYPE DHT11   // DHT 11
+#define DHTTYPE DHT11 // DHT 11
 #define NTP_SERVER "pool.ntp.org"
-#define UTC_OFFSET_DST 0   // Daytime offset is not implemented. hence kept zero to have no effect.
+#define UTC_OFFSET_DST 0 // Daytime offset is not implemented. hence kept zero to have no effect.
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 DHT dhtSensor(DHTPIN, DHTTYPE);
 
-int utc_offset = 19800; //default to Sri Lanka's offset.
-struct tm timeinfo; // contains time data. pre defined struct type.
+int utc_offset = 19800; // default to Sri Lanka's offset.
+struct tm timeinfo;     // contains time data. pre defined struct type.
 
 bool alarm_enabled = true;
 int n_alarms = 3;
-int alarm_hours[] = {0, 1,2};
-int alarm_minutes[] = {1, 10,20};
+int alarm_hours[] = {0, 1, 2};
+int alarm_minutes[] = {1, 10, 20};
 bool alarm_triggered[] = {false, false, false};
 
 int n_notes = 8;
@@ -58,18 +58,19 @@ void println(String text, int column, int row, int text_size)
     display.display();
 }
 
-void println(tm timeinfo ,char *text, int column, int row, int text_size)
+void println(tm timeinfo, char *text, int column, int row, int text_size)
 {
     display.setTextSize(text_size);
     display.setTextColor(SSD1306_WHITE);
     display.setCursor(column, row);
-    display.println(&timeinfo,text);
+    display.println(&timeinfo, text);
     display.display();
 }
 
 void print_time_now()
-{   display.fillRect(0, 0, 128, 16, BLACK);
-    // println(String(days), 0, 0, 2);  // This code makes a flicker effect in the display from left to right since there are multiple statements to be displayed. 
+{
+    display.fillRect(0, 0, 128, 16, BLACK);
+    // println(String(days), 0, 0, 2);  // This code makes a flicker effect in the display from left to right since there are multiple statements to be displayed.
     // println(":", 20, 0, 2);
     // println(String(hours), 30, 0, 2);
     // println(":", 50, 0, 2);
@@ -77,10 +78,10 @@ void print_time_now()
     // println(":", 80, 0, 2);
     // println(String(seconds), 90, 0, 2);
 
-    //Instead of above lines, the single line below is added to avoid flickering and display time as a whole in once.
-    println(timeinfo,"%H:%M:%S", 0,0,2);
+    // Instead of above lines, the single line below is added to avoid flickering and display time as a whole in once.
+    println(timeinfo, "%H:%M:%S", 0, 0, 2);
     display.fillRect(0, 16, 128, 30, BLACK);
-    println(timeinfo,"%d %B %Y", 0,22,1);
+    println(timeinfo, "%d %B %Y", 0, 22, 1);
 }
 
 void ring_alarm()
@@ -113,9 +114,11 @@ void ring_alarm()
     display.clearDisplay();
 }
 
-void update_time(){
-    if (!getLocalTime(&timeinfo)){
-        println("Failed to fetch time from server!",0,0,2);
+void update_time()
+{
+    if (!getLocalTime(&timeinfo))
+    {
+        println("Failed to fetch time from server!", 0, 0, 2);
     }
 }
 
@@ -128,7 +131,7 @@ void update_time_with_check_alarm()
     {
         for (int i = 0; i < n_alarms; i++)
         {
-            Serial.println("hours : " +  String(timeinfo.tm_hour) + " Alram hours : " + String(alarm_hours[i])); //for debugging.
+            // Serial.println("hours : " +  String(timeinfo.tm_hour) + " Alram hours : " + String(alarm_hours[i])); //for debugging.
             if (alarm_triggered[i] == false && alarm_hours[i] == timeinfo.tm_hour && alarm_minutes[i] == timeinfo.tm_min)
             {
                 ring_alarm();
@@ -234,6 +237,10 @@ void set_alarm(int alarm)
         {
             delay(200);
             alarm_minutes[alarm] = temp_minute;
+
+            display.clearDisplay();
+            println("Alarm " + String(alarm+1) + " is set", 0, 0, 2);
+            delay(1000);
             break;
         }
         else if (pressed == PB_CANCEL)
@@ -242,16 +249,12 @@ void set_alarm(int alarm)
             break;
         }
     }
-    display.clearDisplay();
-    /////////////////////////////////////////////
-    println("Alarm " + String(alarm) + "is set", 0, 0, 2);
-    delay(1000);
 }
 
 void set_time_zone()
 {
-    int temp_offset_hours = utc_offset/3600;
-    int temp_offset_minutes = utc_offset/60 - temp_offset_hours*60;
+    int temp_offset_hours = utc_offset / 3600;
+    int temp_offset_minutes = utc_offset / 60 - temp_offset_hours * 60;
 
     while (true)
     {
@@ -263,10 +266,11 @@ void set_time_zone()
         if (pressed == PB_UP)
         {
             delay(200);
-           temp_offset_hours++;
-           if (temp_offset_hours>14){  // 14 hours multiplies by 60.
-            temp_offset_hours = -12;   // 12 hours multiplies by 60.
-           }
+            temp_offset_hours++;
+            if (temp_offset_hours > 14)
+            {                            // 14 hours multiplies by 60.
+                temp_offset_hours = -12; // 12 hours multiplies by 60.
+            }
         }
         else if (pressed == PB_DOWN)
         {
@@ -274,17 +278,17 @@ void set_time_zone()
             temp_offset_hours--;
             if (temp_offset_hours < -12)
             {
-               temp_offset_hours = 14;
+                temp_offset_hours = 14;
             }
         }
         else if (pressed == PB_OK)
         {
-            delay(200);   //since the offset is finally a single variable counted in seconds, setting it here globally is unnecessary. It will be set after taking the minutes as well.
-            break;          
+            delay(200); // since the offset is finally a single variable counted in seconds, setting it here globally is unnecessary. It will be set after taking the minutes as well.
+            break;
         }
         else if (pressed == PB_CANCEL)
         {
-            delay(200);   
+            delay(200);
             break;
         }
     }
@@ -315,7 +319,12 @@ void set_time_zone()
         else if (pressed == PB_OK)
         {
             delay(200);
-            utc_offset = temp_offset_hours*3600 + temp_offset_minutes*60;
+            utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
+
+            configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
+            display.clearDisplay();
+            println("Time zone is set", 0, 0, 2);
+            delay(1000);
             break;
         }
         else if (pressed == PB_CANCEL)
@@ -323,17 +332,12 @@ void set_time_zone()
             delay(200);
             break;
         }
-
     }
-    configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
-    display.clearDisplay();
-    println("Time zone is set", 0, 0, 2);
-    delay(1000);
 }
 
 void run_mode(int mode)
 {
-    if (mode == 0 || mode == 1 || mode ==2)
+    if (mode == 0 || mode == 1 || mode == 2)
     {
         set_alarm(mode); // Notice that the alarm number is equal to the mode number -1.
     }
@@ -344,7 +348,8 @@ void run_mode(int mode)
         println("Alarms disabled!", 0, 0, 2);
         delay(1000);
     }
-    else if (mode  == 4){
+    else if (mode == 4)
+    {
         set_time_zone();
     }
 }
@@ -396,23 +401,23 @@ void check_temp()
     if (temperature > 35.0)
     {
         display.fillRect(0, 46, 128, 10, BLACK);
-        println("TEMP HIGH "+String(temperature)+"C", 0, 46, 1);
+        println("TEMP HIGH " + String(temperature) + "C", 0, 46, 1);
     }
     else if (temperature < 25.0)
     {
         display.fillRect(0, 46, 128, 10, BLACK);
-        println("TEMP LOW "+String(temperature)+"C", 0, 46, 1);
+        println("TEMP LOW " + String(temperature) + "C", 0, 46, 1);
     }
     // for humidity
     if (humidity > 40.0)
     {
         display.fillRect(0, 56, 128, 8, BLACK);
-        println("HUMIDITY HIGH "+String(humidity)+"%", 0, 56, 1);
+        println("HUMIDITY HIGH " + String(humidity) + "%", 0, 56, 1);
     }
     else if (humidity < 20.0)
     {
         display.fillRect(0, 56, 128, 8, BLACK);
-        println("THUMIDITY LOW "+String(humidity)+"%", 0, 56, 1);
+        println("THUMIDITY LOW " + String(humidity) + "%", 0, 56, 1);
     }
 }
 
