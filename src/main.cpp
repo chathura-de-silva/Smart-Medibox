@@ -18,8 +18,7 @@
 #define PB_DOWN 35
 #define DHTPIN 12
 #define NTP_SERVER "pool.ntp.org"
-#define UTC_OFFSET 0
-#define UTC_OFFSET_DST 0
+#define UTC_OFFSET_DST 0   // Daytime offset is not implemented. hence kept zero to have no effect.
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 DHTesp dhtSensor;
@@ -29,14 +28,14 @@ int hours = 0;
 int minutes = 0;
 int seconds = 0;
 
-unsigned long timeNow = 0;
-unsigned long timeLast = 0;
+int utc_offset = 19800; //default to Sri Lanka's offset.
+
 
 bool alarm_enabled = true;
-int n_alarms = 2;
-int alarm_hours[] = {0, 1};
-int alarm_minutes[] = {1, 10};
-bool alarm_triggered[] = {false, false};
+int n_alarms = 3;
+int alarm_hours[] = {0, 1,2};
+int alarm_minutes[] = {1, 10,20};
+bool alarm_triggered[] = {false, false, false};
 
 int n_notes = 8;
 int C = 262;
@@ -50,8 +49,8 @@ int C_H = 523;
 int notes[] = {C, D, E, F, G, A, B, C_H};
 
 int current_mode = 0;
-int max_modes = 4;
-String modes[] = {"1 - Set Time", "2 - Set Alarm 1", "3 - Set Alarm 2", "4 - Disable Alarms"};
+int max_modes = 6;
+String modes[] = {"1 - Set Time", "2 - Set Alarm 1", "3 - Set Alarm 2", "4 - Set Alarm 2", "5 - Disable Alarms", "6 - Set Time Zone"};
 
 void println(String text, int column, int row, int text_size)
 {
@@ -339,22 +338,108 @@ void set_alarm(int alarm)
     delay(1000);
 }
 
+void set_time_zone()
+{
+    int temp_offset_hours = utc_offset/3600;
+    int temp_offset_minutes = utc_offset/60 - temp_offset_hours*60;
+
+    while (true)
+    {
+        display.clearDisplay();
+        println("Enter UTC offset hours: " + String(temp_offset_hours), 0, 0, 2);
+
+        int pressed = wait_for_button_press();
+
+        if (pressed == PB_UP)
+        {
+            delay(200);
+           temp_offset_hours++;
+           if (temp_offset_hours>14){  // 14 hours multiplies by 60.
+            temp_offset_hours = -12;   // 12 hours multiplies by 60.
+           }
+        }
+        else if (pressed == PB_DOWN)
+        {
+            delay(200);
+            temp_offset_hours--;
+            if (temp_offset_hours < -12)
+            {
+               temp_offset_hours = 14;
+            }
+        }
+        else if (pressed == PB_OK)
+        {
+            delay(200);   //since the offset is finally a single variable counted in seconds, setting it here globally is unnecessary. It will be set after taking the minutes as well.
+            break;          
+        }
+        else if (pressed == PB_CANCEL)
+        {
+            delay(200);   
+            break;
+        }
+    }
+
+    while (true)
+    {
+        display.clearDisplay();
+        println("Enter offset minutes: " + String(temp_offset_minutes), 0, 0, 2);
+
+        int pressed = wait_for_button_press();
+
+        if (pressed == PB_UP)
+        {
+            delay(200);
+            temp_offset_minutes++;
+            temp_offset_minutes = temp_offset_minutes % 60;
+        }
+        else if (pressed == PB_DOWN)
+        {
+            delay(200);
+            temp_offset_minutes--;
+            temp_offset_minutes = temp_offset_minutes % 60;
+            if (temp_offset_minutes < 0)
+            {
+                temp_offset_minutes = 59;
+            }
+        }
+        else if (pressed == PB_OK)
+        {
+            delay(200);
+            utc_offset = temp_offset_hours*3600 + temp_offset_minutes*60;
+            break;
+        }
+        else if (pressed == PB_CANCEL)
+        {
+            delay(200);
+            break;
+        }
+
+    }
+    configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
+    display.clearDisplay();
+    println("Time zone is set", 0, 0, 2);
+    delay(1000);
+}
+
 void run_mode(int mode)
 {
     if (mode == 0)
     {
         set_time();
     }
-    else if (mode == 1 || mode == 2)
+    else if (mode == 1 || mode == 2 || mode ==3)
     {
         set_alarm(mode - 1); // Notice that the alarm number is equal to the mode number -1.
     }
-    else if (mode == 3)
+    else if (mode == 4)
     {
         alarm_enabled = false;
         display.clearDisplay();
         println("Alarms disabled!", 0, 0, 2);
         delay(1000);
+    }
+    else if (mode  == 5){
+        set_time_zone();
     }
 }
 
@@ -457,7 +542,7 @@ void setup()
     println("Connected to WIFI", 0, 0, 2);
     delay(1000);
 
-    configTime(UTC_OFFSET, UTC_OFFSET_DST, NTP_SERVER);
+    configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
 
     display.clearDisplay();
     println("Welcome to Medibox!", 10, 20, 2);
