@@ -64,8 +64,7 @@ void println(String text, int column, int row, int text_size)
 }
 
 void print_time_now()
-{
-    display.clearDisplay();
+{   display.fillRect(0, 0, 128, 16, BLACK);
     // println(String(days), 0, 0, 2);  // This code makes a flicker effect in the display from left to right since there are multiple statements to be displayed. 
     // println(":", 20, 0, 2);
     // println(String(hours), 30, 0, 2);
@@ -75,7 +74,9 @@ void print_time_now()
     // println(String(seconds), 90, 0, 2);
 
     //Instead of above lines, the single line below is added to avoid flickering and display time as a whole in once.
-    println(String(days)+":"+String(hours)+":"+ String(minutes) +":"+String(seconds), 0, 0, 2);
+    println(String(hours)+":"+ String(minutes) +":"+String(seconds), 0,0,2);
+    display.fillRect(0, 16, 128, 30, BLACK);
+    println(String(days), 0, 22, 1);
 }
 
 void update_time()
@@ -491,24 +492,24 @@ void check_temp()
     // for temperature
     if (temperature > 35.0)
     {
-        display.clearDisplay();
-        println("TEMP HIGH", 0, 40, 1);
+        display.fillRect(0, 46, 128, 10, BLACK);
+        println("TEMP HIGH", 0, 46, 1);
     }
     else if (temperature < 25.0)
     {
-        display.clearDisplay();
-        println("TEMP LOW ("+String(temperature)+")", 0, 40, 1);
+        display.fillRect(0, 46, 128, 10, BLACK);
+        println("TEMP LOW ("+String(temperature)+")", 0, 46, 1);
     }
     // for humidity
     if (humidity > 40.0)
     {
-        display.clearDisplay();
-        println("HUMIDITY HIGH ("+String(humidity)+")", 0, 50, 1);
+        display.fillRect(0, 56, 128, 8, BLACK);
+        println("HUMIDITY HIGH ("+String(humidity)+")", 0, 56, 1);
     }
     else if (humidity < 20.0)
     {
-        display.clearDisplay();
-        println("THUMIDITY LOW", 0, 50, 1);
+        display.fillRect(0, 56, 128, 8, BLACK);
+        println("THUMIDITY LOW", 0, 56, 1);
     }
 }
 
