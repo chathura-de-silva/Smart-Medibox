@@ -2,7 +2,8 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include <DHTesp.h>
+#include <DHT.h>
+#include <Adafruit_Sensor.h>
 #include <WiFi.h>
 
 #define SCREEN_WIDTH 128
@@ -16,12 +17,13 @@
 #define PB_OK 32
 #define PB_UP 33
 #define PB_DOWN 35
-#define DHTPIN 12
+#define DHTPIN 4
+#define DHTTYPE DHT11   // DHT 11
 #define NTP_SERVER "pool.ntp.org"
 #define UTC_OFFSET_DST 0   // Daytime offset is not implemented. hence kept zero to have no effect.
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-DHTesp dhtSensor;
+DHT dhtSensor(DHTPIN, DHTTYPE);
 
 int days = 0;
 int hours = 0;
@@ -484,26 +486,26 @@ void go_to_menu()
 
 void check_temp()
 {
-    TempAndHumidity data = dhtSensor.getTempAndHumidity();
-    Serial.println("Temparature : " + String(data.temperature));
+    float temperature = dhtSensor.readTemperature();
+    float humidity = dhtSensor.readHumidity();
     // for temperature
-    if (data.temperature > 35)
+    if (temperature > 35.0)
     {
         display.clearDisplay();
         println("TEMP HIGH", 0, 40, 1);
     }
-    else if (data.temperature > 25)
+    else if (temperature < 25.0)
     {
         display.clearDisplay();
-        println("TEMP LOW", 0, 40, 1);
+        println("TEMP LOW ("+String(temperature)+")", 0, 40, 1);
     }
     // for humidity
-    if (data.humidity > 40)
+    if (humidity > 40.0)
     {
         display.clearDisplay();
-        println("HUMIDITY HIGH", 0, 50, 1);
+        println("HUMIDITY HIGH ("+String(humidity)+")", 0, 50, 1);
     }
-    else if (data.humidity > 20)
+    else if (humidity < 20.0)
     {
         display.clearDisplay();
         println("THUMIDITY LOW", 0, 50, 1);
@@ -519,7 +521,7 @@ void setup()
     pinMode(PB_OK, INPUT);
     pinMode(PB_UP, INPUT);
 
-    dhtSensor.setup(DHTPIN, DHTesp::DHT22);
+    dhtSensor.begin();
 
     Serial.begin(115200);
 
