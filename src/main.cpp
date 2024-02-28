@@ -25,15 +25,8 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 DHT dhtSensor(DHTPIN, DHTTYPE);
 
-int days = 0;
-int hours = 0;
-int minutes = 0;
-int seconds = 0;
-int months =0;
-int years = 0;
-
 int utc_offset = 19800; //default to Sri Lanka's offset.
-
+struct tm timeinfo; // contains time data. pre defined struct type.
 
 bool alarm_enabled = true;
 int n_alarms = 3;
@@ -65,6 +58,15 @@ void println(String text, int column, int row, int text_size)
     display.display();
 }
 
+void println(tm timeinfo ,char *text, int column, int row, int text_size)
+{
+    display.setTextSize(text_size);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(column, row);
+    display.println(&timeinfo,text);
+    display.display();
+}
+
 void print_time_now()
 {   display.fillRect(0, 0, 128, 16, BLACK);
     // println(String(days), 0, 0, 2);  // This code makes a flicker effect in the display from left to right since there are multiple statements to be displayed. 
@@ -76,39 +78,9 @@ void print_time_now()
     // println(String(seconds), 90, 0, 2);
 
     //Instead of above lines, the single line below is added to avoid flickering and display time as a whole in once.
-    println(String(hours)+":"+ String(minutes) +":"+String(seconds), 0,0,2);
+    println(timeinfo,"%H:%M:%S", 0,0,2);
     display.fillRect(0, 16, 128, 30, BLACK);
-    println(String(days)+"."+ String(months) +"."+String(years), 0, 22, 1);
-}
-
-void update_time()
-{
-    struct tm timeinfo;
-    getLocalTime(&timeinfo);
-    
-    char  timeHour[3];
-    strftime(timeHour,3,"%H", &timeinfo);
-    hours = atoi(timeHour);
-
-    char  timeMinute[3];
-    strftime(timeMinute,3,"%M", &timeinfo);
-    minutes = atoi(timeMinute);
-
-    char  timeSecond[3];
-    strftime(timeSecond,3,"%S", &timeinfo);
-    seconds = atoi(timeSecond);
-
-    char  timeDay[3];
-    strftime(timeDay,3,"%d", &timeinfo);
-    days = atoi(timeDay);
-
-    char  timeMonth[3];
-    strftime(timeMonth,3,"%m", &timeinfo);
-    months = atoi(timeMonth);
-
-    char  timeYear[5];
-    strftime(timeYear,5,"%Y", &timeinfo);
-    years = atoi(timeYear);
+    println(timeinfo,"%d %B %Y", 0,22,1);
 }
 
 void ring_alarm()
@@ -141,6 +113,12 @@ void ring_alarm()
     display.clearDisplay();
 }
 
+void update_time(){
+    if (!getLocalTime(&timeinfo)){
+        println("Failed to fetch time from server!",0,0,2);
+    }
+}
+
 void update_time_with_check_alarm()
 {
     update_time();
@@ -150,7 +128,8 @@ void update_time_with_check_alarm()
     {
         for (int i = 0; i < n_alarms; i++)
         {
-            if (alarm_triggered[i] == false && alarm_hours[i] == hours && alarm_minutes[i] == minutes)
+            Serial.println("hours : " +  String(timeinfo.tm_hour) + " Alram hours : " + String(alarm_hours[i]));
+            if (alarm_triggered[i] == false && alarm_hours[i] == timeinfo.tm_hour && alarm_minutes[i] == timeinfo.tm_min)
             {
                 ring_alarm();
                 alarm_triggered[i] = true;
@@ -264,6 +243,7 @@ void set_alarm(int alarm)
         }
     }
     display.clearDisplay();
+    /////////////////////////////////////////////
     println("Alarm " + String(alarm) + "is set", 0, 0, 2);
     delay(1000);
 }
@@ -398,7 +378,7 @@ void go_to_menu()
         {
             delay(200);
             run_mode(current_mode);
-            // Serial.println(current_mode); //Note that the
+            break;
         }
         else if (pressed == PB_CANCEL)
         {
@@ -416,23 +396,23 @@ void check_temp()
     if (temperature > 35.0)
     {
         display.fillRect(0, 46, 128, 10, BLACK);
-        println("TEMP HIGH", 0, 46, 1);
+        println("TEMP HIGH "+String(temperature)+"C", 0, 46, 1);
     }
     else if (temperature < 25.0)
     {
         display.fillRect(0, 46, 128, 10, BLACK);
-        println("TEMP LOW ("+String(temperature)+")", 0, 46, 1);
+        println("TEMP LOW "+String(temperature)+"C", 0, 46, 1);
     }
     // for humidity
     if (humidity > 40.0)
     {
         display.fillRect(0, 56, 128, 8, BLACK);
-        println("HUMIDITY HIGH ("+String(humidity)+")", 0, 56, 1);
+        println("HUMIDITY HIGH "+String(humidity)+"%", 0, 56, 1);
     }
     else if (humidity < 20.0)
     {
         display.fillRect(0, 56, 128, 8, BLACK);
-        println("THUMIDITY LOW", 0, 56, 1);
+        println("THUMIDITY LOW "+String(humidity)+"%", 0, 56, 1);
     }
 }
 
