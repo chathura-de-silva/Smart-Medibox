@@ -130,3 +130,4 @@ void update_time_with_check_alarm()
         }
     }
 }
+

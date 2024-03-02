@@ -101,9 +101,9 @@ void print_time_now()
     // println(String(seconds), 90, 0, 2);
 
     // Instead of above lines, the single line below is added to avoid flickering and display time as a whole in once.
-    println(timeinfo, "%H:%M:%S", 0, 0, 2);
+    println(timeinfo, "%H:%M:%S", 18, 0, 2);
     display.fillRect(0, 16, 128, 30, BLACK);
-    println(timeinfo, "%d %B %Y", 0, 22, 1);
+    println(timeinfo, "%d %B %Y", 25, 22, 1);
 }
 
 void update_time()
