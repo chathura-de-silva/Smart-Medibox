@@ -49,7 +49,6 @@ void ring_alarm()
     display.clearDisplay();
 }
 
-
 void set_alarm(int alarm)
 {
     int temp_hour = alarm_hours[alarm];
