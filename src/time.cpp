@@ -102,7 +102,7 @@ void print_time_now()
 
     // Instead of above lines, the single line below is added to avoid flickering and display time as a whole in once.
     println(timeinfo, "%H:%M:%S", 18, 0, 2);
-    display.fillRect(0, 16, 128, 30, BLACK);
+    display.fillRect(0, 16, 128, 16, BLACK);
     println(timeinfo, "%d %B %Y", 25, 22, 1);
 }
 
