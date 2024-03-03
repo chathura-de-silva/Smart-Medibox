@@ -14,4 +14,4 @@ extern struct tm timeinfo;
 extern const unsigned char splashScreen[];
 extern const unsigned char tick[];
 extern const unsigned char wifi[];
-extern const unsigned char happyFace[];
+extern const unsigned char waveformAnimation[31] [1024];

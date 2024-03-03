@@ -4,6 +4,7 @@
 
 DHT dhtSensor(DHTPIN, DHTTYPE);
 
+int animationFrameCounter = 30;
 // Flag to track if conditions for shwoing image were previously met
 bool conditionsMetPreviously = false;
 
@@ -11,13 +12,13 @@ void check_temp()
 {
     float temperature = dhtSensor.readTemperature();
     float humidity = dhtSensor.readHumidity();
-    
-    // Check if conditions for white square are currently met
-   bool conditionsMetNow = (temperature >= 26.0 && temperature <= 32.0 && humidity >= 60.0 && humidity <= 80.0); //becomes true if temperature and humidity both are within limits. i.e. when the OK image is supposed to be started displaying.
 
+    // Check if conditions for white square are currently met
+    bool conditionsMetNow = (temperature >= 26.0 && temperature <= 32.0 && humidity >= 60.0 && humidity <= 80.0); // becomes true if temperature and humidity both are within limits. i.e. when the OK image is supposed to be started displaying.
 
     // Reset display if conditions are different from the previous iteration
-    if (conditionsMetNow != conditionsMetPreviously) { 
+    if (conditionsMetNow != conditionsMetPreviously)
+    {
         display.fillRect(0, 30, 128, 34, BLACK);
         conditionsMetPreviously = conditionsMetNow;
     }
@@ -49,6 +50,12 @@ void check_temp()
     // Display the OK image if conditions are currently met
     if (conditionsMetNow)
     {
-        display.drawBitmap(0, 0, happyFace, 128, 64, WHITE);
+        display.fillRect(0, 30, 128, 34, BLACK);
+        display.drawBitmap(0, 20, waveformAnimation[animationFrameCounter], 128, 64, WHITE);
+        animationFrameCounter--;
+        if (animationFrameCounter < 0)
+        {
+            animationFrameCounter = 30;
+        }
     }
 }
