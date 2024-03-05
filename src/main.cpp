@@ -40,11 +40,11 @@ void setup()
         delay(250);
         display.clearDisplay();
         display.drawBitmap(0, 0, wifi, 128, 64, WHITE);
-        println("Waiting For Wifi", 18, 50, 1,true);
+        println("Waiting For Wifi", 18, 50, 1, true);
     }
     display.clearDisplay();
     display.drawBitmap(0, 0, tick, 128, 64, WHITE);
-    println("Wifi Connected!", 20, 50, 1,true);
+    println("Wifi Connected!", 20, 50, 1, true);
     delay(300);
     configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
     display.clearDisplay();

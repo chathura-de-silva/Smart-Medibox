@@ -13,7 +13,7 @@ void set_time_zone()
     while (true)
     {
         display.clearDisplay();
-        println("Enter UTC offset hours: " + String(temp_offset_hours), 0, 0, 2);
+        println("Enter UTC offset hours: " + String(temp_offset_hours), 0, 0, 2,true);
 
         int pressed = wait_for_button_press();
 
@@ -50,7 +50,7 @@ void set_time_zone()
     while (true)
     {
         display.clearDisplay();
-        println("Enter offset minutes: " + String(temp_offset_minutes), 0, 0, 2,true);
+        println("Enter offset minutes: " + String(temp_offset_minutes), 0, 0, 2, true);
 
         int pressed = wait_for_button_press();
 
@@ -77,7 +77,7 @@ void set_time_zone()
 
             configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
             display.clearDisplay();
-            println("Time zone is set", 0, 0, 2,true);
+            println("Time zone is set", 0, 0, 2, true);
             delay(1000);
             break;
         }
@@ -99,8 +99,8 @@ void print_time_now()
 void update_time()
 {
     if (!getLocalTime(&timeinfo))
-    {   
+    {
         display.clearDisplay();
-        println("Failed to fetch time from server!", 0, 0, 2,true);
+        println("Failed to fetch time from server!", 0, 0, 2, true);
     }
 }

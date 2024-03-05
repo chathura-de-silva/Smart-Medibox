@@ -15,14 +15,14 @@ void check_temp()
     // Check temperature
     if (temperature > 32.0)
     {
-        
         println("TEMP HIGH " + String(temperature) + "C", 14, 46, 1);
     }
     else if (temperature < 26.0)
     {
         println("TEMP LOW " + String(temperature) + "C", 18, 46, 1);
     }
-    else{
+    else
+    {
         temp_in_range = true;
     }
 
@@ -35,7 +35,8 @@ void check_temp()
     {
         println("HUMIDITY LOW " + String(humidity) + "%", 8, 56, 1);
     }
-    else if (temp_in_range){
+    else if (temp_in_range)
+    {
         display.drawBitmap(0, 20, waveformAnimation[animationFrameCounter], 128, 64, WHITE);
         animationFrameCounter--;
         if (animationFrameCounter < 0)
