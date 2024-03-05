@@ -13,7 +13,10 @@ void set_time_zone()
     while (true)
     {
         display.clearDisplay();
-        println("Enter UTC offset hours: " + String(temp_offset_hours), 0, 0, 2,true);
+        display.fillRoundRect(23, 12, 39, 34, 4, WHITE);
+        println(formatNumber(temp_offset_hours), 26, 18, 3,false, BLACK);
+        println(formatNumber(temp_offset_minutes), 76, 18, 3,true, WHITE);
+        println(":", 60, 18, 3,true, WHITE);
 
         int pressed = wait_for_button_press();
 
@@ -49,8 +52,11 @@ void set_time_zone()
 
     while (true)
     {
-        display.clearDisplay();
-        println("Enter offset minutes: " + String(temp_offset_minutes), 0, 0, 2, true);
+        display.fillRoundRect(23, 12, 39, 34, 4, BLACK);
+        println(formatNumber(temp_offset_hours), 26, 18, 3,false, WHITE); 
+        //Above two lines removes the white background around the hour setting state.(i.e. inverts the hour part of the display back.)
+        display.fillRoundRect(73, 12, 39, 34, 4, WHITE);
+        println(formatNumber(temp_offset_minutes), 76, 18, 3,true, BLACK);
 
         int pressed = wait_for_button_press();
 

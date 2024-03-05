@@ -52,12 +52,14 @@ void ring_alarm()
 void set_alarm(int alarm)
 {
     int temp_hour = alarm_hours[alarm];
+    int temp_minute = alarm_minutes[alarm];
 
     while (true)
     {
         display.clearDisplay();
         display.fillRoundRect(23, 12, 39, 34, 4, WHITE);
         println(formatNumber(temp_hour), 26, 18, 3,false, BLACK);
+        println(formatNumber(temp_minute), 76, 18, 3,true, WHITE);
         println(":", 60, 18, 3,true, WHITE);
         int pressed = wait_for_button_press();
 
@@ -89,8 +91,6 @@ void set_alarm(int alarm)
             break;
         }
     }
-
-    int temp_minute = alarm_minutes[alarm];
 
     while (true)
     {
