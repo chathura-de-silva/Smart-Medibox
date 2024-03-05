@@ -56,8 +56,9 @@ void set_alarm(int alarm)
     while (true)
     {
         display.clearDisplay();
-        println("Enter hour: " + String(temp_hour), 0, 0, 2, true);
-
+        display.fillRoundRect(23, 12, 39, 34, 4, WHITE);
+        println(formatNumber(temp_hour), 26, 18, 3,false, BLACK);
+        println(":", 60, 18, 3,true, WHITE);
         int pressed = wait_for_button_press();
 
         if (pressed == PB_UP)
@@ -93,8 +94,11 @@ void set_alarm(int alarm)
 
     while (true)
     {
-        display.clearDisplay();
-        println("Enter minute: " + String(temp_minute), 0, 0, 2, true);
+        display.fillRoundRect(23, 12, 39, 34, 4, BLACK);
+        println(formatNumber(temp_hour), 26, 18, 3,false, WHITE); 
+        //Above two lines removes the white background around the hour setting state.(i.e. inverts the hour part of the display back.)
+        display.fillRoundRect(73, 12, 39, 34, 4, WHITE);
+        println(formatNumber(temp_minute), 76, 18, 3,true, BLACK);
 
         int pressed = wait_for_button_press();
 
