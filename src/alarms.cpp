@@ -22,7 +22,7 @@ const int notes[] = {C, D, E, F, G, A, B, C_H};
 void ring_alarm()
 {
     display.clearDisplay();
-    println("MEDICINE TIME!", 0, 0, 2);
+    println("MEDICINE TIME!", 0, 0, 2, true);
     // Turning the LED ON
     digitalWrite(LED_1, HIGH);
     // Ringing the buzzer
@@ -56,7 +56,7 @@ void set_alarm(int alarm)
     while (true)
     {
         display.clearDisplay();
-        println("Enter hour: " + String(temp_hour), 0, 0, 2);
+        println("Enter hour: " + String(temp_hour), 0, 0, 2,true);
 
         int pressed = wait_for_button_press();
 
@@ -94,7 +94,7 @@ void set_alarm(int alarm)
     while (true)
     {
         display.clearDisplay();
-        println("Enter minute: " + String(temp_minute), 0, 0, 2);
+        println("Enter minute: " + String(temp_minute), 0, 0, 2,true);
 
         int pressed = wait_for_button_press();
 
@@ -120,7 +120,7 @@ void set_alarm(int alarm)
             alarm_minutes[alarm] = temp_minute;
 
             display.clearDisplay();
-            println("Alarm " + String(alarm + 1) + " is set", 0, 0, 2);
+            println("Alarm " + String(alarm + 1) + " is set", 0, 0, 2,true);
             delay(1000);
             break;
         }

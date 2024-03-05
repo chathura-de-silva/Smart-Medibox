@@ -8,22 +8,28 @@ const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Al
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-void println(String text, int column, int row, int text_size)
+void println(String text, int column, int row, int text_size, bool display_now)
 {
     display.setTextSize(text_size);
     display.setTextColor(SSD1306_WHITE);
     display.setCursor(column, row);
     display.println(text);
-    display.display();
+    if (display_now)
+    {
+        display.display();
+    }
 }
 
-void println(tm timeinfo, char *text, int column, int row, int text_size)
+void println(tm timeinfo, char *text, int column, int row, int text_size, bool display_now)
 {
     display.setTextSize(text_size);
     display.setTextColor(SSD1306_WHITE);
     display.setCursor(column, row);
     display.println(&timeinfo, text);
-    display.display();
+    if (display_now)
+    {
+        display.display();
+    }
 }
 
 void run_mode(int mode)
@@ -36,7 +42,7 @@ void run_mode(int mode)
     {
         alarm_enabled = false;
         display.clearDisplay();
-        println("Alarms disabled!", 0, 0, 2);
+        println("Alarms disabled!", 0, 0, 2,true);
         delay(1000);
     }
     else if (mode == 4)
@@ -50,7 +56,7 @@ void go_to_menu()
     while (digitalRead(PB_CANCEL) == HIGH)
     {
         display.clearDisplay();
-        println(modes[current_mode], 0, 0, 2);
+        println(modes[current_mode], 0, 0, 2,true);
 
         int pressed = wait_for_button_press();
 
