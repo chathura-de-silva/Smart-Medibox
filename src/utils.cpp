@@ -58,9 +58,9 @@ void display_menu(int active_mode){
 
     display.clearDisplay();
     
-    for(int i = 5*(page_number-1) ;i<5*page_number ;i++){  //Only 5 menu items displayed at a time in the display.
+    for(int i = 5*(page_number-1) ;i<min(5*page_number,max_modes) ;i++){  //Only 5 menu items displayed at a time in the display.
         if (i == active_mode){
-            display.fillRect(0,row,128,14,WHITE);
+            display.fillRoundRect(0,row,128,14,2,WHITE);
             println(modes[i],0,row+padding_top,1, false, BLACK );
         }
         else{
