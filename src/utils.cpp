@@ -8,22 +8,28 @@ const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Al
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-void println(String text, int column, int row, int text_size)
+void println(String text, int column, int row, int text_size, bool display_now, int color)
 {
     display.setTextSize(text_size);
-    display.setTextColor(SSD1306_WHITE);
+    display.setTextColor(color);
     display.setCursor(column, row);
     display.println(text);
-    display.display();
+    if (display_now)
+    {
+        display.display();
+    }
 }
 
-void println(tm timeinfo, char *text, int column, int row, int text_size)
+void println(tm timeinfo, char *text, int column, int row, int text_size, bool display_now, int color)
 {
     display.setTextSize(text_size);
-    display.setTextColor(SSD1306_WHITE);
+    display.setTextColor(color);
     display.setCursor(column, row);
     display.println(&timeinfo, text);
-    display.display();
+    if (display_now)
+    {
+        display.display();
+    }
 }
 
 void run_mode(int mode)
@@ -36,7 +42,7 @@ void run_mode(int mode)
     {
         alarm_enabled = false;
         display.clearDisplay();
-        println("Alarms disabled!", 0, 0, 2);
+        println("Alarms disabled!", 0, 0, 2, true);
         delay(1000);
     }
     else if (mode == 4)
@@ -45,12 +51,31 @@ void run_mode(int mode)
     }
 }
 
+void display_menu(int active_mode){
+    int row = 0; 
+    const int padding_top = 4;
+    int page_number = 1+active_mode/5;
+
+    display.clearDisplay();
+    
+    for(int i = 5*(page_number-1) ;i<min(5*page_number,max_modes) ;i++){  //Only 5 menu items displayed at a time in the display.
+        if (i == active_mode){
+            display.fillRoundRect(0,row,128,14,2,WHITE);
+            println(modes[i],0,row+padding_top,1, false, BLACK );
+        }
+        else{
+            println(modes[i],0,row+padding_top,1, false, WHITE );
+        }
+        row+=12;
+    }
+    display.display();
+}
+
 void go_to_menu()
 {
     while (digitalRead(PB_CANCEL) == HIGH)
     {
-        display.clearDisplay();
-        println(modes[current_mode], 0, 0, 2);
+        display_menu(current_mode);
 
         int pressed = wait_for_button_press();
 
@@ -83,7 +108,6 @@ void go_to_menu()
         }
     }
 }
-
 
 int wait_for_button_press()
 {

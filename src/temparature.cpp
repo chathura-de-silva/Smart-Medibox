@@ -4,30 +4,45 @@
 
 DHT dhtSensor(DHTPIN, DHTTYPE);
 
+int animationFrameCounter = 30;
+
 void check_temp()
 {
     float temperature = dhtSensor.readTemperature();
     float humidity = dhtSensor.readHumidity();
-    // for temperature
-    if (temperature > 35.0)
+    bool temp_in_range = false;
+
+    // Check temperature
+    if (temperature > 32.0)
     {
-        display.fillRect(0, 46, 128, 10, BLACK);
-        println("TEMP HIGH " + String(temperature) + "C", 0, 46, 1);
+        println("TEMP HIGH " + String(temperature) + "C", 14, 46, 1);
     }
-    else if (temperature < 25.0)
+    else if (temperature < 26.0)
     {
-        display.fillRect(0, 46, 128, 10, BLACK);
-        println("TEMP LOW " + String(temperature) + "C", 0, 46, 1);
+        println("TEMP LOW " + String(temperature) + "C", 18, 46, 1);
     }
-    // for humidity
-    if (humidity > 40.0)
+    else
     {
-        display.fillRect(0, 56, 128, 8, BLACK);
-        println("HUMIDITY HIGH " + String(humidity) + "%", 0, 56, 1);
+        temp_in_range = true;
     }
-    else if (humidity < 20.0)
+
+    // Check humidity
+    if (humidity > 80.0)
     {
-        display.fillRect(0, 56, 128, 8, BLACK);
-        println("THUMIDITY LOW " + String(humidity) + "%", 0, 56, 1);
+        println("HUMIDITY HIGH " + String(humidity) + "%", 4, 56, 1);
     }
+    else if (humidity < 60.0)
+    {
+        println("HUMIDITY LOW " + String(humidity) + "%", 8, 56, 1);
+    }
+    else if (temp_in_range)
+    {
+        display.drawBitmap(0, 20, waveformAnimation[animationFrameCounter], 128, 64, WHITE);
+        animationFrameCounter--;
+        if (animationFrameCounter < 0)
+        {
+            animationFrameCounter = 30;
+        }
+    }
+    display.display();
 }

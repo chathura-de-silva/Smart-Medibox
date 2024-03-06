@@ -13,7 +13,7 @@ void set_time_zone()
     while (true)
     {
         display.clearDisplay();
-        println("Enter UTC offset hours: " + String(temp_offset_hours), 0, 0, 2);
+        println("Enter UTC offset hours: " + String(temp_offset_hours), 0, 0, 2,true);
 
         int pressed = wait_for_button_press();
 
@@ -50,7 +50,7 @@ void set_time_zone()
     while (true)
     {
         display.clearDisplay();
-        println("Enter offset minutes: " + String(temp_offset_minutes), 0, 0, 2);
+        println("Enter offset minutes: " + String(temp_offset_minutes), 0, 0, 2, true);
 
         int pressed = wait_for_button_press();
 
@@ -77,7 +77,7 @@ void set_time_zone()
 
             configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
             display.clearDisplay();
-            println("Time zone is set", 0, 0, 2);
+            println("Time zone is set", 0, 0, 2, true);
             delay(1000);
             break;
         }
@@ -91,25 +91,16 @@ void set_time_zone()
 
 void print_time_now()
 {
-    display.fillRect(0, 0, 128, 16, BLACK);
-    // println(String(days), 0, 0, 2);  // This code makes a flicker effect in the display from left to right since there are multiple statements to be displayed.
-    // println(":", 20, 0, 2);
-    // println(String(hours), 30, 0, 2);
-    // println(":", 50, 0, 2);
-    // println(String(minutes), 60, 0, 2);
-    // println(":", 80, 0, 2);
-    // println(String(seconds), 90, 0, 2);
-
-    // Instead of above lines, the single line below is added to avoid flickering and display time as a whole in once.
-    println(timeinfo, "%H:%M:%S", 0, 0, 2);
-    display.fillRect(0, 16, 128, 30, BLACK);
-    println(timeinfo, "%d %B %Y", 0, 22, 1);
+    display.clearDisplay();
+    println(timeinfo, "%H:%M:%S", 18, 0, 2);
+    println(timeinfo, "%d %B %Y", 25, 22, 1);
 }
 
 void update_time()
 {
     if (!getLocalTime(&timeinfo))
     {
-        println("Failed to fetch time from server!", 0, 0, 2);
+        display.clearDisplay();
+        println("Failed to fetch time from server!", 0, 0, 2, true);
     }
 }

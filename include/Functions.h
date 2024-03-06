@@ -1,7 +1,4 @@
-// Functions from utils.cpp
-
-void println(String text, int column, int row, int text_size);
-void println(tm timeinfo, char *text, int column, int row, int text_size);
+#include <map>
 
 // Functions from alarms.cpp
 void ring_alarm();
@@ -11,6 +8,8 @@ void set_alarm(int alarm);
 int wait_for_button_press();
 void go_to_menu();
 void update_time_with_check_alarm();
+void println(String text, int column, int row, int text_size, bool display_now = false, int color = WHITE);
+void println(tm timeinfo, char *text, int column, int row, int text_size, bool display_now = false, int color = WHITE);
 
 // FUnctions from temperature.cpp
 void check_temp();

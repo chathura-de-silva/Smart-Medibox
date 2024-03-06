@@ -30,23 +30,23 @@ void setup()
         for (;;)
             ;
     }
+    display.clearDisplay();
+    display.drawBitmap(0, 0, splashScreen, 128, 64, WHITE);
     display.display();
-    delay(500);
+    delay(1200);
     WiFi.begin("MSI 8690", "abcdefgh", 6);
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(250);
         display.clearDisplay();
-        println("Connecting to WIFI", 0, 0, 2);
+        display.drawBitmap(0, 0, wifi, 128, 64, WHITE);
+        println("Waiting For Wifi", 18, 50, 1, true);
     }
     display.clearDisplay();
-    println("Connected to WIFI", 0, 0, 2);
-    delay(1000);
-
+    display.drawBitmap(0, 0, tick, 128, 64, WHITE);
+    println("Wifi Connected!", 20, 50, 1, true);
+    delay(300);
     configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
-    display.clearDisplay();
-    println("Welcome to Medibox!", 10, 20, 2);
-    delay(1000); // added additional delay to display the above message.
     display.clearDisplay();
 }
 
