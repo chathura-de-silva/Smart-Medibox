@@ -23,7 +23,7 @@ void set_time_zone()
             println("+", 9, 18, 3, false, WHITE);
         }
         println(formatNumber(abs(temp_offset_hours)), 33, 18, 3, false, BLACK); // absoluting the hours to display because sign is handled above separately.
-        println(formatNumber(temp_offset_minutes), 83, 18, 3, true, WHITE);
+        println(formatNumber(abs(temp_offset_minutes)), 83, 18, 3, true, WHITE);
         println(":", 67, 18, 3, true, WHITE);
 
         int pressed = wait_for_button_press();
@@ -66,16 +66,12 @@ void set_time_zone()
         println(formatNumber(abs(temp_offset_hours)), 33, 18, 3, false, WHITE); // absoluting the hours to display because sign is handled above separately.
         // Above two lines removes the white background around the hour setting state.(i.e. inverts the hour part of the display back.)
         display.fillRoundRect(80, 12, 39, 34, 4, WHITE);
-        println(formatNumber(is_edge_case ? 0 : temp_offset_minutes ), 83, 18, 3, true, BLACK); // This will always make the user see "00" as minutes if the hours are set to 14 or -12. Actual change of variable will be done later in thecode.
+        println(formatNumber(abs(is_edge_case ? temp_offset_hours = 0 : temp_offset_minutes) ), 83, 18, 3, true, BLACK); // This will always make the user see "00" as minutes if the hours are set to 14 or -12. Actual change of variable will be done later in thecode. And the abs is used because no need to print the sign of the minutes.
 
         int pressed = wait_for_button_press();
 
         if (pressed == PB_OK || is_edge_case && pressed != PB_CANCEL) //when press ok or edge case is true and not press cancel, have to update the time accordingly.
         {
-            if (is_edge_case)
-            {
-                temp_offset_minutes = 0;
-            }
             delay(200);
             utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
 
