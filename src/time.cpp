@@ -70,7 +70,19 @@ void set_time_zone()
 
         int pressed = wait_for_button_press();
 
-        if (pressed == PB_UP)
+        if (pressed == PB_OK || is_edge_case && pressed != PB_CANCEL)
+        {
+            delay(200);
+            utc_offset = temp_offset_hours * 3600 + (is_edge_case ? temp_offset_minutes=0 : temp_offset_minutes * 60);
+
+            configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
+            display.clearDisplay();
+            update_time();
+            println("Time zone is set", 0, 0, 2, true);
+            delay(1000);
+            break;
+        }
+        else if (pressed == PB_UP)
         {
             delay(200);
             temp_offset_minutes++;
@@ -85,18 +97,6 @@ void set_time_zone()
             {
                 temp_offset_minutes = 59;
             }
-        }
-        else if (pressed == PB_OK)
-        {
-            delay(200);
-            utc_offset = temp_offset_hours * 3600 + (is_edge_case ? 0 : temp_offset_minutes * 60);
-
-            configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
-            display.clearDisplay();
-            update_time();
-            println("Time zone is set", 0, 0, 2, true);
-            delay(1000);
-            break;
         }
         else if (pressed == PB_CANCEL)
         {
