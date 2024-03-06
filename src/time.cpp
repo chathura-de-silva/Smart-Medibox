@@ -2,9 +2,9 @@
 #include <Functions.h>
 #include <Constants.h>
 
-int utc_offset = 19800; // default to Sri Lanka's offset.
-int temp_offset_hours = utc_offset / 3600;
-int temp_offset_minutes = utc_offset / 60 - temp_offset_hours * 60;
+ // default to Sri Lanka's offset.
+int temp_offset_hours = DEFAULT_UTC_OFFSET / 3600;
+int temp_offset_minutes = DEFAULT_UTC_OFFSET  / 60 - temp_offset_hours * 60;
 struct tm timeinfo; // contains time data. pre defined struct type.
 
 void set_time_zone()
