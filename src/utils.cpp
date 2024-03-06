@@ -8,6 +8,14 @@ const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Al
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+String formatNumber(int num) {  //formats a given number to have two digits if its between 0 and 9.
+    if (num >= 0 && num <= 9) {
+        return "0" + String(num); // Prepend 0 if num is a single digit
+    } else {
+        return String(num); // No need to modify if num is already two or more digits
+    }
+}
+
 void println(String text, int column, int row, int text_size, bool display_now, int color)
 {
     display.setTextSize(text_size);

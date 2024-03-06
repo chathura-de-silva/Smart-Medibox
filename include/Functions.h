@@ -5,6 +5,7 @@ void ring_alarm();
 void set_alarm(int alarm);
 
 // Functions from utils.cpp
+String formatNumber(int num);
 int wait_for_button_press();
 void go_to_menu();
 void update_time_with_check_alarm();

@@ -46,7 +46,7 @@ void setup()
     display.drawBitmap(0, 0, tick, 128, 64, WHITE);
     println("Wifi Connected!", 20, 50, 1, true);
     delay(300);
-    configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
+    configTime(DEFAULT_UTC_OFFSET, UTC_OFFSET_DST, NTP_SERVER);
     display.clearDisplay();
 }
 
