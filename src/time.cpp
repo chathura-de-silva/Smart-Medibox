@@ -18,7 +18,7 @@ void set_time_zone()
         {
             println("-", 9, 18, 3, false, WHITE);
         }
-        else
+        else if (temp_offset_hours > 0)
         {
             println("+", 9, 18, 3, false, WHITE);
         }
@@ -54,7 +54,7 @@ void set_time_zone()
         else if (pressed == PB_CANCEL)
         {
             delay(200);
-            break;
+            return;
         }
     }
 
@@ -70,7 +70,7 @@ void set_time_zone()
 
         int pressed = wait_for_button_press();
 
-        if (pressed == PB_OK || is_edge_case && pressed != PB_CANCEL)
+        if (pressed == PB_OK || is_edge_case && pressed != PB_CANCEL) //when press ok or edge case is true and not press cancel, have to update the time accordingly.
         {
             delay(200);
             utc_offset = temp_offset_hours * 3600 + (is_edge_case ? temp_offset_minutes=0 : temp_offset_minutes * 60);

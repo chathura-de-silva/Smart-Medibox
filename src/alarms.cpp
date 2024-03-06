@@ -88,7 +88,7 @@ void set_alarm(int alarm)
         else if (pressed == PB_CANCEL)
         {
             delay(200);
-            break;
+            return;
         }
     }
 
