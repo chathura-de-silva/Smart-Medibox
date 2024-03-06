@@ -3,13 +3,12 @@
 #include <Constants.h>
 
 int utc_offset = 19800; // default to Sri Lanka's offset.
-struct tm timeinfo;     // contains time data. pre defined struct type.
+int temp_offset_hours = utc_offset / 3600;
+int temp_offset_minutes = utc_offset / 60 - temp_offset_hours * 60;
+struct tm timeinfo; // contains time data. pre defined struct type.
 
 void set_time_zone()
 {
-    int temp_offset_hours = utc_offset / 3600;
-    int temp_offset_minutes = utc_offset / 60 - temp_offset_hours * 60;
-
     while (true)
     {
         display.clearDisplay();
@@ -22,8 +21,8 @@ void set_time_zone()
         {
             println("+", 9, 18, 3, false, WHITE);
         }
-        println(formatNumber(abs(temp_offset_hours)), 33, 18, 3, false, BLACK); // absoluting the hours to display because sign is handled above separately.
-        println(formatNumber(abs(temp_offset_minutes)), 83, 18, 3, true, WHITE);
+        println(formatNumber(abs(temp_offset_hours)), 33, 18, 3, false, BLACK);  // absoluting the hours to display because sign is handled above separately.
+        println(formatNumber(abs(temp_offset_minutes)), 83, 18, 3, true, WHITE); // No sense of printing sign here again for minutes.
         println(":", 67, 18, 3, true, WHITE);
 
         int pressed = wait_for_button_press();
@@ -66,16 +65,16 @@ void set_time_zone()
         println(formatNumber(abs(temp_offset_hours)), 33, 18, 3, false, WHITE); // absoluting the hours to display because sign is handled above separately.
         // Above two lines removes the white background around the hour setting state.(i.e. inverts the hour part of the display back.)
         display.fillRoundRect(80, 12, 39, 34, 4, WHITE);
-        println(formatNumber(abs(is_edge_case ? temp_offset_hours = 0 : temp_offset_minutes) ), 83, 18, 3, true, BLACK); // This will always make the user see "00" as minutes if the hours are set to 14 or -12. Actual change of variable will be done later in thecode. And the abs is used because no need to print the sign of the minutes.
+        println(formatNumber(abs(is_edge_case ? temp_offset_minutes = 0 : temp_offset_minutes)), 83, 18, 3, true, BLACK); // This will always make the user see "00" as minutes if the hours are set to 14 or -12. Actual change of variable will be done later in thecode. And the abs is used because no need to print the sign of the minutes.
 
         int pressed = wait_for_button_press();
 
-        if (pressed == PB_OK || is_edge_case && pressed != PB_CANCEL) //when press ok or edge case is true and not press cancel, have to update the time accordingly.
+        if (pressed == PB_OK || is_edge_case && pressed != PB_CANCEL) // when press ok or edge case is true and not press cancel, have to update the time accordingly.
         {
-            delay(200);
-            utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
+            // Serial.println("Setting time zone..." + String(temp_offset_hours) + ":" + String(temp_offset_minutes)); //Uncomment this line for debugging.
 
-            configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
+            delay(200);
+            configTime(temp_offset_hours * 3600 + temp_offset_minutes * 60, UTC_OFFSET_DST, NTP_SERVER);
             display.clearDisplay();
             update_time();
             println("Time zone is set", 0, 0, 2, true);
@@ -85,13 +84,13 @@ void set_time_zone()
         else if (pressed == PB_UP)
         {
             delay(200);
-            temp_offset_minutes++;
+            temp_offset_minutes += temp_offset_minutes / abs(temp_offset_minutes); // this is because when the minute offset is negative, since the shown value is a positive value, the up button is supposed to increment the absolute value. i.e. decrement the actual value.
             temp_offset_minutes = temp_offset_minutes % 60;
         }
         else if (pressed == PB_DOWN)
         {
             delay(200);
-            temp_offset_minutes--;
+            temp_offset_minutes -= temp_offset_minutes / abs(temp_offset_minutes);
             temp_offset_minutes = temp_offset_minutes % 60;
             if (temp_offset_minutes < 0)
             {
