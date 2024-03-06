@@ -72,8 +72,12 @@ void set_time_zone()
 
         if (pressed == PB_OK || is_edge_case && pressed != PB_CANCEL) //when press ok or edge case is true and not press cancel, have to update the time accordingly.
         {
+            if (is_edge_case)
+            {
+                temp_offset_minutes = 0;
+            }
             delay(200);
-            utc_offset = temp_offset_hours * 3600 + (is_edge_case ? temp_offset_minutes=0 : temp_offset_minutes * 60);
+            utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
 
             configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
             display.clearDisplay();
