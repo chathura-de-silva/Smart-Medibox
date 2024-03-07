@@ -31,21 +31,16 @@ void setup()
             ;
     }
     display.clearDisplay();
-    display.drawBitmap(0, 0, splashScreen, 128, 64, WHITE);
+    display.drawBitmap(0, 0, splashScreen, 128, 64, WHITE); // This is not a modalpage. It is a splash screen. text is embedded to a bitmap.
     display.display();
     delay(1200);
     WiFi.begin("MSI 8690", "abcdefgh", 6);
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(250);
-        display.clearDisplay();
-        display.drawBitmap(0, 0, wifi, 128, 64, WHITE);
-        println("Waiting For Wifi", 18, 50, 1, true);
+        show_modal_page(wifi,0,"Waiting For Wifi", 18);
     }
-    display.clearDisplay();
-    display.drawBitmap(0, 0, tick, 128, 64, WHITE);
-    println("Wifi Connected!", 20, 50, 1, true);
-    delay(300);
+    show_modal_page(tick,100,"Wifi Connected!", 20);
     configTime(DEFAULT_UTC_OFFSET, UTC_OFFSET_DST, NTP_SERVER);
     display.clearDisplay();
 }

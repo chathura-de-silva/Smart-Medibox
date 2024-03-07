@@ -49,9 +49,7 @@ void run_mode(int mode)
     else if (mode == 3)
     {
         alarm_enabled = false;
-        display.clearDisplay();
-        println("Alarms disabled!", 0, 0, 2, true);
-        delay(1000);
+        show_modal_page(alarm_disable,1000,"Alarms Disabled!", 20);
     }
     else if (mode == 4)
     {
@@ -161,4 +159,11 @@ void update_time_with_check_alarm()
             }
         }
     }
+}
+
+void show_modal_page(const unsigned char* bitmap,int period, String text, int x_offset){ //This function is responsible for showing a provided bitmap above a given text, in full screen.
+    display.clearDisplay();
+    display.drawBitmap(0, 0, bitmap, 128, 64, WHITE);
+    println(text, x_offset, 50, 1, true);
+    delay(period);
 }

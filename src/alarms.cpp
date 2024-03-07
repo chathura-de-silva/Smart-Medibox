@@ -21,10 +21,9 @@ const int notes[] = {C, D, E, F, G, A, B, C_H};
 
 void ring_alarm()
 {
-    display.clearDisplay();
-    println("MEDICINE TIME!", 0, 0, 2, true);
-    // Turning the LED ON
+        // Turning the LED ON
     digitalWrite(LED_1, HIGH);
+    show_modal_page(medicine_time ,1000,"It's Medicine Time!", 8);
     // Ringing the buzzer
 
     bool break_happened = false;
@@ -123,9 +122,7 @@ void set_alarm(int alarm)
             delay(200);
             alarm_minutes[alarm] = temp_minute;
 
-            display.clearDisplay();
-            println("Alarm " + String(alarm + 1) + " is set", 0, 0, 2, true);
-            delay(1000);
+            show_modal_page(alarm_ring,1000,"Alarm set to "+formatNumber(temp_hour)+":"+formatNumber(temp_minute),10);
             break;
         }
         else if (pressed == PB_CANCEL)

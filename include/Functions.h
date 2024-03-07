@@ -11,6 +11,7 @@ void go_to_menu();
 void update_time_with_check_alarm();
 void println(String text, int column, int row, int text_size, bool display_now = false, int color = WHITE);
 void println(tm timeinfo, char *text, int column, int row, int text_size, bool display_now = false, int color = WHITE);
+void show_modal_page(const unsigned char* bitmap,int period, String text, int x_offset);
 
 // FUnctions from temperature.cpp
 void check_temp();
