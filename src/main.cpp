@@ -21,7 +21,7 @@ void setup()
     pinMode(PB_UP, INPUT);
 
     dhtSensor.begin();
-
+    
     Serial.begin(115200);
 
     if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESSS))
@@ -34,7 +34,7 @@ void setup()
     display.drawBitmap(0, 0, splashScreen, 128, 64, WHITE); // This is not a modalpage. It is a splash screen. text is embedded to a bitmap.
     display.display();
     delay(1200);
-    WiFi.begin("MSI 8690", "abcdefgh", 6);
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD, 6);
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(250);

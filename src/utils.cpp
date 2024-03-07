@@ -28,7 +28,7 @@ void println(String text, int column, int row, int text_size, bool display_now, 
     }
 }
 
-void println(tm timeinfo, char *text, int column, int row, int text_size, bool display_now, int color)
+void println(tm timeinfo, const char *text, int column, int row, int text_size, bool display_now, int color)
 {
     display.setTextSize(text_size);
     display.setTextColor(color);
