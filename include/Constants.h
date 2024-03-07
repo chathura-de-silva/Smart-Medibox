@@ -14,3 +14,5 @@
 #define NTP_SERVER "pool.ntp.org"
 #define UTC_OFFSET_DST 0 // Daytime offset is not implemented. hence kept zero to have no effect.
 #define DEFAULT_UTC_OFFSET 19800 // 5:30 hours in seconds.i.e. Sri lankas time.
+#define WIFI_SSID "MSI 8690"
+#define WIFI_PASSWORD "abcdefgh"

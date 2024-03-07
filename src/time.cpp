@@ -75,10 +75,8 @@ void set_time_zone()
 
             delay(200);
             configTime(temp_offset_hours * 3600 + temp_offset_minutes * 60, UTC_OFFSET_DST, NTP_SERVER);
-            display.clearDisplay();
             update_time();
-            println("Time zone is set", 0, 0, 2, true);
-            delay(1000);
+            show_modal_page(time_zone,1000,"Time Zone Set!", 23);
             break;
         }
         else if (pressed == PB_UP)
