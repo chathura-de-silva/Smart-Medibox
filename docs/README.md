@@ -90,6 +90,13 @@ lib_deps =
 
 Current implementation doesn't retain the user data in the non-volatile memory of the MCU. This is because there is a issue/bug that makes accessing such saved data early after device boot up fail. Probably because when it comes to the built-in library: `preferences.h`, it needs some time to fetch data after initialising and opening a namespace. It seems to be running on a dedicated core, parallely. 
 
-## About
+# Screenshot Gallery
+
+<img width="1604" alt="Gallery Image" src="./1.jpg"> |  <img width="1604" alt="Gallery Image" src="./2.jpg"> |<img width="1604" alt="Gallery Image" src="./3.jpg">
+:-------------------------:|:-------------------------:|:-------------------------:
+<img width="1604" alt="Gallery Image" src="./4.jpg">  |  <img width="1604" alt="Gallery Image" src="./5.jpg">|<img width="1604" alt="Gallery Image" src="./6.jpg">
+<img width="1604" alt="Gallery Image" src="./7.jpg">  |  <img width="1604" alt="Gallery Image" src="./8.jpg">|<img width="1604" alt="Gallery Image" src="./9.jpg">
+
+# About
 
 This project was first developed as the Semester 4 Project in the Module `EN2853 - Embedded Systems & Applications`, UoM, CSE.
