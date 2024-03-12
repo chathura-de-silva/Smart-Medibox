@@ -49,6 +49,7 @@ void run_mode(int mode)
     else if (mode == 3)
     {
         alarm_enabled = false;
+        save_is_alarm_enabled();
         show_modal_page(alarm_disable,1000,"Alarms Disabled!", 20);
     }
     else if (mode == 4)

@@ -26,3 +26,4 @@ void load_user_settings();
 void save_time_zone();
 void save_alarm(int alarm);
 void reset_preferences();
+void save_is_alarm_enabled();

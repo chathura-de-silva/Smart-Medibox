@@ -123,6 +123,7 @@ void set_alarm(int alarm)
             alarm_minutes[alarm] = temp_minute;
             if (!alarm_enabled){
                 alarm_enabled = true;
+                save_is_alarm_enabled();
                 for (int i = 0; i < n_alarms; i++)
                 {
                         alarm_triggered[i] = true;  
