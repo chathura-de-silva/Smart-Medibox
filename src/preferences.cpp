@@ -15,8 +15,8 @@ void load_user_settings()
         alarm_triggered[i] = preferences.getBool("alarm_triggered_" + i, false);
     }
     alarm_enabled = preferences.getBool("alarm_enabled", false);
-    temp_offset_hours= preferences.getInt("utc_offset_h", DEFAULT_UTC_OFFSET_H);
-    temp_offset_minutes= preferences.getInt("utc_offset_m", DEFAULT_UTC_OFFSET_M);
+    temp_offset_hours = preferences.getInt("utc_offset_h", DEFAULT_UTC_OFFSET_H);
+    temp_offset_minutes = preferences.getInt("utc_offset_m", DEFAULT_UTC_OFFSET_M);
     preferences.end();
 }
 

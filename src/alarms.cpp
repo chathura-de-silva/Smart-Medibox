@@ -21,9 +21,9 @@ const int notes[] = {C, D, E, F, G, A, B, C_H};
 
 void ring_alarm()
 {
-        // Turning the LED ON
+    // Turning the LED ON
     digitalWrite(LED_1, HIGH);
-    show_modal_page(medicine_time ,200,"It's Medicine Time!", 8);
+    show_modal_page(medicine_time, 200, "It's Medicine Time!", 8);
     // Ringing the buzzer
 
     bool break_happened = false;
@@ -57,9 +57,9 @@ void set_alarm(int alarm)
     {
         display.clearDisplay();
         display.fillRoundRect(23, 12, 39, 34, 4, WHITE);
-        println(formatNumber(temp_hour), 26, 18, 3,false, BLACK);
-        println(formatNumber(temp_minute), 76, 18, 3,true, WHITE);
-        println(":", 60, 18, 3,true, WHITE);
+        println(formatNumber(temp_hour), 26, 18, 3, false, BLACK);
+        println(formatNumber(temp_minute), 76, 18, 3, true, WHITE);
+        println(":", 60, 18, 3, true, WHITE);
         int pressed = wait_for_button_press();
 
         if (pressed == PB_UP)
@@ -94,10 +94,10 @@ void set_alarm(int alarm)
     while (true)
     {
         display.fillRoundRect(23, 12, 39, 34, 4, BLACK);
-        println(formatNumber(temp_hour), 26, 18, 3,false, WHITE); 
-        //Above two lines removes the white background around the hour setting state.(i.e. inverts the hour part of the display back.)
+        println(formatNumber(temp_hour), 26, 18, 3, false, WHITE);
+        // Above two lines removes the white background around the hour setting state.(i.e. inverts the hour part of the display back.)
         display.fillRoundRect(73, 12, 39, 34, 4, WHITE);
-        println(formatNumber(temp_minute), 76, 18, 3,true, BLACK);
+        println(formatNumber(temp_minute), 76, 18, 3, true, BLACK);
 
         int pressed = wait_for_button_press();
 
@@ -121,17 +121,18 @@ void set_alarm(int alarm)
         {
             delay(50);
             alarm_minutes[alarm] = temp_minute;
-            if (!alarm_enabled){
+            if (!alarm_enabled)
+            {
                 alarm_enabled = true;
                 save_is_alarm_enabled();
                 for (int i = 0; i < n_alarms; i++)
                 {
-                        alarm_triggered[i] = true;  
+                    alarm_triggered[i] = true;
                 }
                 alarm_triggered[alarm] = false;
             }
 
-            show_modal_page(alarm_ring,1000,"Alarm set to "+formatNumber(temp_hour)+":"+formatNumber(temp_minute),10);
+            show_modal_page(alarm_ring, 1000, "Alarm set to " + formatNumber(temp_hour) + ":" + formatNumber(temp_minute), 10);
             save_alarm(alarm);
             break;
         }

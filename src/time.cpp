@@ -6,12 +6,9 @@ struct tm timeinfo; // contains time data. pre defined struct type.
 
 int temp_offset_hours;
 int temp_offset_minutes;
-int utc_offset;
 
 void set_time_zone()
 {
-    // default to Sri Lanka's offset.
-
     while (true)
     {
         display.clearDisplay();
@@ -77,8 +74,7 @@ void set_time_zone()
             // Serial.println("Setting time zone..." + String(temp_offset_hours) + ":" + String(temp_offset_minutes)); //Uncomment this line for debugging.
 
             delay(50);
-            utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
-            configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
+            configTime(temp_offset_hours * 3600 + temp_offset_minutes * 60, UTC_OFFSET_DST, NTP_SERVER);
             update_time();
             show_modal_page(time_zone, 1000, "Time Zone Set!", 23);
             save_time_zone();
