@@ -3,8 +3,8 @@
 #include <Constants.h>
 
 int current_mode = 0;
-const int max_modes = 5;
-const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Alarms", "Set Time Zone"};
+const int max_modes = 6;
+const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Alarms", "Set Time Zone", "Reset Settings"};
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
@@ -49,11 +49,15 @@ void run_mode(int mode)
     else if (mode == 3)
     {
         alarm_enabled = false;
+        save_is_alarm_enabled();
         show_modal_page(alarm_disable,1000,"Alarms Disabled!", 20);
     }
     else if (mode == 4)
     {
         set_time_zone();
+    }
+    else if (mode==5){
+       reset_preferences();
     }
 }
 
@@ -87,13 +91,13 @@ void go_to_menu()
 
         if (pressed == PB_UP)
         {
-            delay(200);
+            delay(50);
             current_mode++;
             current_mode = current_mode % max_modes;
         }
         else if (pressed == PB_DOWN)
         {
-            delay(200);
+            delay(50);
             current_mode--;
             current_mode = current_mode % max_modes;
             if (current_mode < 0)
@@ -103,13 +107,13 @@ void go_to_menu()
         }
         else if (pressed == PB_OK)
         {
-            delay(200);
+            delay(50);
             run_mode(current_mode);
             break;
         }
         else if (pressed == PB_CANCEL)
         {
-            delay(200);
+            delay(50);
             break;
         }
     }
@@ -121,22 +125,22 @@ int wait_for_button_press()
     {
         if (digitalRead(PB_UP) == LOW)
         {
-            delay(200);
+            delay(100);
             return PB_UP;
         }
         else if (digitalRead(PB_DOWN) == LOW)
         {
-            delay(200);
+            delay(100);
             return PB_DOWN;
         }
         else if (digitalRead(PB_OK) == LOW)
         {
-            delay(200);
+            delay(100);
             return PB_OK;
         }
         else if (digitalRead(PB_CANCEL) == LOW)
         {
-            delay(200);
+            delay(100);
             return PB_CANCEL;
         }
     }

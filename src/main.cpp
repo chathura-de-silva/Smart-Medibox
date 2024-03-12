@@ -21,7 +21,7 @@ void setup()
     pinMode(PB_UP, INPUT);
 
     dhtSensor.begin();
-    
+
     Serial.begin(115200);
 
     if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESSS))
@@ -38,10 +38,11 @@ void setup()
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(250);
-        show_modal_page(wifi,0,"Waiting For Wifi", 18);
+        show_modal_page(wifi, 0, "Waiting For Wifi", 18);
     }
-    show_modal_page(tick,100,"Wifi Connected!", 20);
-    configTime(DEFAULT_UTC_OFFSET, UTC_OFFSET_DST, NTP_SERVER);
+    show_modal_page(tick, 100, "Wifi Connected!", 20);
+    load_user_settings(); // loads data using preferences object. defaults assigned if not stored in preferences.
+    configTime(temp_offset_hours * 3600 + temp_offset_minutes * 60, UTC_OFFSET_DST, NTP_SERVER);
     display.clearDisplay();
 }
 
