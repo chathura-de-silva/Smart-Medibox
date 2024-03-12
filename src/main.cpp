@@ -42,6 +42,7 @@ void setup()
     }
     show_modal_page(tick,100,"Wifi Connected!", 20);
     load_user_settings(); // loads data using preferences object. defaults assigned if not stored in preferences.
+    utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
     configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
     display.clearDisplay();
 }

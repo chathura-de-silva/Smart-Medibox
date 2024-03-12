@@ -6,7 +6,7 @@ struct tm timeinfo; // contains time data. pre defined struct type.
 
 int temp_offset_hours;
 int temp_offset_minutes;
-int utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
+int utc_offset;
 
 void set_time_zone()
 {
