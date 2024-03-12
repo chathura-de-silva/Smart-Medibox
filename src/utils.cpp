@@ -3,8 +3,8 @@
 #include <Constants.h>
 
 int current_mode = 0;
-const int max_modes = 5;
-const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Alarms", "Set Time Zone"};
+const int max_modes = 6;
+const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Alarms", "Set Time Zone", "Reset Settings"};
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
@@ -54,6 +54,9 @@ void run_mode(int mode)
     else if (mode == 4)
     {
         set_time_zone();
+    }
+    else if (mode==5){
+       reset_preferences();
     }
 }
 

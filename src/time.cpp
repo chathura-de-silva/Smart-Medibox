@@ -2,13 +2,14 @@
 #include <Functions.h>
 #include <Constants.h>
 
- // default to Sri Lanka's offset.
-int temp_offset_hours = DEFAULT_UTC_OFFSET / 3600;
-int temp_offset_minutes = DEFAULT_UTC_OFFSET  / 60 - temp_offset_hours * 60;
 struct tm timeinfo; // contains time data. pre defined struct type.
+int utc_offset;     // contains the offset in seconds.
 
 void set_time_zone()
 {
+    // default to Sri Lanka's offset.
+    int temp_offset_hours = utc_offset / 3600;
+    int temp_offset_minutes = utc_offset/ 60 - temp_offset_hours * 60;
     while (true)
     {
         display.clearDisplay();
@@ -74,9 +75,11 @@ void set_time_zone()
             // Serial.println("Setting time zone..." + String(temp_offset_hours) + ":" + String(temp_offset_minutes)); //Uncomment this line for debugging.
 
             delay(200);
-            configTime(temp_offset_hours * 3600 + temp_offset_minutes * 60, UTC_OFFSET_DST, NTP_SERVER);
+            utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
+            configTime(utc_offset, UTC_OFFSET_DST, NTP_SERVER);
             update_time();
-            show_modal_page(time_zone,1000,"Time Zone Set!", 23);
+            show_modal_page(time_zone, 1000, "Time Zone Set!", 23);
+            save_time_zone();
             break;
         }
         else if (pressed == PB_UP)

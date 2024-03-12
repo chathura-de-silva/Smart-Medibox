@@ -88,7 +88,7 @@ lib_deps =
 
 # Known issues
 
-Current implementation doesn't retain the user data in the non-volatile memory of the MCU. This is because there is a issue/bug that makes accessing such saved data early after device boot up fail. Probably because when it comes to the built-in library: `preferences.h`, it needs some time to fetch data after initialising and opening a namespace. It seems to be running on a dedicated core, parallely. 
+Currently there are no known issues. If there is any, please open an issue in the `issus` section with a relavant label.
 
 # Screenshot Gallery
 

@@ -20,3 +20,9 @@ void check_temp();
 void set_time_zone();
 void update_time();
 void print_time_now();
+
+//Functions of preferences.cpp
+void load_user_settings();
+void save_time_zone();
+void save_alarm(int alarm);
+void reset_preferences();

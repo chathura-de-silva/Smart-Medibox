@@ -2,11 +2,11 @@
 #include <Functions.h>
 #include <Constants.h>
 
-bool alarm_enabled = true;
+bool alarm_enabled;
 const int n_alarms = 3;
-int alarm_hours[] = {0, 1, 2};
-int alarm_minutes[] = {1, 10, 20};
-bool alarm_triggered[] = {false, false, false};
+int alarm_hours[n_alarms];
+int alarm_minutes[n_alarms];
+bool alarm_triggered[n_alarms];
 
 const int n_notes = 8;
 const int C = 262;
@@ -23,7 +23,7 @@ void ring_alarm()
 {
         // Turning the LED ON
     digitalWrite(LED_1, HIGH);
-    show_modal_page(medicine_time ,1000,"It's Medicine Time!", 8);
+    show_modal_page(medicine_time ,200,"It's Medicine Time!", 8);
     // Ringing the buzzer
 
     bool break_happened = false;
@@ -121,8 +121,17 @@ void set_alarm(int alarm)
         {
             delay(200);
             alarm_minutes[alarm] = temp_minute;
+            if (!alarm_enabled){
+                alarm_enabled = true;
+                for (int i = 0; i < n_alarms; i++)
+                {
+                        alarm_triggered[i] = true;  
+                }
+                alarm_triggered[alarm] = false;
+            }
 
             show_modal_page(alarm_ring,1000,"Alarm set to "+formatNumber(temp_hour)+":"+formatNumber(temp_minute),10);
+            save_alarm(alarm);
             break;
         }
         else if (pressed == PB_CANCEL)
