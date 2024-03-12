@@ -64,13 +64,13 @@ void set_alarm(int alarm)
 
         if (pressed == PB_UP)
         {
-            delay(200);
+            delay(50);
             temp_hour++;
             temp_hour = temp_hour % 24;
         }
         else if (pressed == PB_DOWN)
         {
-            delay(200);
+            delay(50);
             temp_hour--;
             temp_hour = temp_hour % 24;
             if (temp_hour < 0)
@@ -80,13 +80,13 @@ void set_alarm(int alarm)
         }
         else if (pressed == PB_OK)
         {
-            delay(200);
+            delay(50);
             alarm_hours[alarm] = temp_hour;
             break;
         }
         else if (pressed == PB_CANCEL)
         {
-            delay(200);
+            delay(50);
             return;
         }
     }
@@ -103,13 +103,13 @@ void set_alarm(int alarm)
 
         if (pressed == PB_UP)
         {
-            delay(200);
+            delay(50);
             temp_minute++;
             temp_minute = temp_minute % 60;
         }
         else if (pressed == PB_DOWN)
         {
-            delay(200);
+            delay(50);
             temp_minute--;
             temp_minute = temp_minute % 60;
             if (temp_minute < 0)
@@ -119,7 +119,7 @@ void set_alarm(int alarm)
         }
         else if (pressed == PB_OK)
         {
-            delay(200);
+            delay(50);
             alarm_minutes[alarm] = temp_minute;
             if (!alarm_enabled){
                 alarm_enabled = true;
@@ -136,7 +136,7 @@ void set_alarm(int alarm)
         }
         else if (pressed == PB_CANCEL)
         {
-            delay(200);
+            delay(50);
             break;
         }
     }
