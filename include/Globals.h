@@ -13,6 +13,8 @@ extern int alarm_minutes[];
 extern bool alarm_triggered[];
 extern struct tm timeinfo;
 extern int utc_offset; 
+extern int temp_offset_hours;
+extern int temp_offset_minutes;
 //images
 extern const unsigned char splashScreen[];
 extern const unsigned char tick[];

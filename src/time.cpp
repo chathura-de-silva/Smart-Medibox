@@ -3,13 +3,15 @@
 #include <Constants.h>
 
 struct tm timeinfo; // contains time data. pre defined struct type.
-int utc_offset;     // contains the offset in seconds.
+
+int temp_offset_hours;
+int temp_offset_minutes;
+int utc_offset = temp_offset_hours * 3600 + temp_offset_minutes * 60;
 
 void set_time_zone()
 {
     // default to Sri Lanka's offset.
-    int temp_offset_hours = utc_offset / 3600;
-    int temp_offset_minutes = utc_offset/ 60 - temp_offset_hours * 60;
+
     while (true)
     {
         display.clearDisplay();
