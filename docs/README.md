@@ -85,10 +85,49 @@ lib_deps =
 
 	3.	`check_temp()` - Reads the data from the `DHT11` sensor, prints a warning in the display if there is any parameter that is out of the specified limits. If there isn't any, plays an animation on the screen indicating it is actively monitoring those parameters.
 
+# Configuration of Wireless Accesspoint and WiFi Credentials
+
+## Hardcoded values
+*	You can change the default values for both the passwords and SSIDs of the Wireless Accesspoint created by the Smart Medibox as well as the default SSID and Password for your wireless internet access point. 
+* To do so, change the `./include/constants.h` accordingly. 
+* Existing default values are as follows.
+```cpp
+...
+//SSID and Password of the Access point created by the Medibox.
+#define AP_SSID "Smart Medibox" 
+#define AP_PASSWORD "abcdefgh"
+...
+//SSID and Password of your internet accesspoint. 
+//It is not necessary to change this here. 
+//You can change the effective values of these parameters anytime,
+//Even after uploading the binary to the device.
+#define DEFAULT_WIFI_SSID "MSI 8690" uploading.
+#define DEFAULT_WIFI_PASSWORD "abcdefgh"
+```
+
+## Configuring your Internet Accesspoint credentials
+*	After the initial boot, the device tries to connect to the wireless network with the credentials mentioned above in the `constants.h`. If it is not the first boot, then it will read the credentials from the non-volatile memory of the device. 
+
+*	If the device cannot find the Wifi network with the specified credentials within 10 seconds(You can change this waiting time in the `constants.h`), it will enter the `Wifi configuration Mode` where the device initiates a Wifi Accesspoint (a "Wireless Hotspot") which you can connect to using a device such as a smartphone or a pc.
+
+The default credentials are as follows :
+```
+SSID : Smart Medibox
+Password : abcdefgh
+```
+
+*	The display will start displaying an IP address to you to visit to. Open the web browser and visit the IP address specified in the Device Display.(Usually this value is `192.168.4.1`)
+
+![WifiConfig](./wifi_config.png)
+
+*	Enter your Router/Internet Accesspoint SSID and Password and hit `Save`. The device will reboot connecting to the wireless network you specified.
+
+*	While device is up and running, at any time you can change your accesspoint via the main menu of the device. Choose `Wifi Config Menu`.
 
 # Known issues
 
-Currently there are no known issues. If there is any, please open an issue in the `issus` section with a relavant label.
+A Minor shortcoming : If you accidently entered the wifi configuration menu via the device menu and you don't want to change the current Wifi credentials.
+*	 You have to either hard restart the device or refill with the same credentials and click `save` (To do this you have to connect to the Smart Medibox's Wifi Accesspoint and visit the relavant URL using your web browser.)
 
 # Screenshot Gallery
 
