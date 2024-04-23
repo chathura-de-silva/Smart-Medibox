@@ -3,8 +3,8 @@
 #include <Constants.h>
 #include <Functions.h>
 
-String wifi_username;
-String wifi_password;
+String wifi_username = DEFAULT_WIFI_SSID;
+String wifi_password = DEFAULT_WIFI_PASSWORD;
 
 void config_wifi()
 {
@@ -23,6 +23,9 @@ void config_wifi()
     Serial.println(IP);
 
     server.begin();
+    wifi_username = "";
+    wifi_password = "";
+    
     while (wifi_username == "" || wifi_password == "")
     {
         WiFiClient client = server.available(); // Listen for incoming clients

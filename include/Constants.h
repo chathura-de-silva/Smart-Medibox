@@ -18,3 +18,5 @@
 #define AP_SSID "Smart Medibox" //SSID and Password of the Access point created by the ESP32.
 #define AP_PASSWORD "abcdefgh"
 #define WIFI_CONNECTION_LISTENING_TIMEOUT 10000 // 10 seconds
+#define DEFAULT_WIFI_SSID "MSI 8690"
+#define DEFAULT_WIFI_PASSWORD "abcdefgh"
