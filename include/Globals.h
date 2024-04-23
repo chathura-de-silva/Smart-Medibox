@@ -26,3 +26,5 @@ extern const unsigned char alarm_ring[];
 extern const unsigned char alarm_disable[];
 extern const unsigned char medicine_time[];
 extern const unsigned char reset[];
+extern const unsigned char wifi_fail [];
+extern const unsigned char wifi_config [];

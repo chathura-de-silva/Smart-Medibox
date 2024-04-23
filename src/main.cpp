@@ -46,7 +46,8 @@ void setup()
         currentMillis = millis();
         if (currentMillis - previousMillis >= WIFI_CONNECTION_LISTENING_TIMEOUT) // IF the limit gets exceeded, then the ESP32 will restart after getting wifi reconfigured.
         {
-            Serial.println("Failed to connect.");
+            // Serial.println("Failed to connect.");
+            show_modal_page(wifi_fail, 1000, "Wifi Failure!", 26);
             config_wifi(); // This function is defined in webServer.cpp
             ESP.restart();
         }
