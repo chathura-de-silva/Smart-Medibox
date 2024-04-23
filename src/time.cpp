@@ -2,10 +2,10 @@
 #include <Functions.h>
 #include <Constants.h>
 
- // default to Sri Lanka's offset.
-int temp_offset_hours = DEFAULT_UTC_OFFSET / 3600;
-int temp_offset_minutes = DEFAULT_UTC_OFFSET  / 60 - temp_offset_hours * 60;
 struct tm timeinfo; // contains time data. pre defined struct type.
+
+int temp_offset_hours;
+int temp_offset_minutes;
 
 void set_time_zone()
 {
@@ -29,7 +29,7 @@ void set_time_zone()
 
         if (pressed == PB_UP)
         {
-            delay(200);
+            delay(50);
             temp_offset_hours++;
             if (temp_offset_hours > 14)
             {                            // 14 hours multiplies by 60.
@@ -38,7 +38,7 @@ void set_time_zone()
         }
         else if (pressed == PB_DOWN)
         {
-            delay(200);
+            delay(50);
             temp_offset_hours--;
             if (temp_offset_hours < -12)
             {
@@ -47,12 +47,12 @@ void set_time_zone()
         }
         else if (pressed == PB_OK)
         {
-            delay(200); // since the offset is finally a single variable counted in seconds, setting it here globally is unnecessary. It will be set after taking the minutes as well.
+            delay(50); // since the offset is finally a single variable counted in seconds, setting it here globally is unnecessary. It will be set after taking the minutes as well.
             break;
         }
         else if (pressed == PB_CANCEL)
         {
-            delay(200);
+            delay(50);
             return;
         }
     }
@@ -73,21 +73,22 @@ void set_time_zone()
         {
             // Serial.println("Setting time zone..." + String(temp_offset_hours) + ":" + String(temp_offset_minutes)); //Uncomment this line for debugging.
 
-            delay(200);
+            delay(50);
             configTime(temp_offset_hours * 3600 + temp_offset_minutes * 60, UTC_OFFSET_DST, NTP_SERVER);
             update_time();
-            show_modal_page(time_zone,1000,"Time Zone Set!", 23);
+            show_modal_page(time_zone, 1000, "Time Zone Set!", 23);
+            save_time_zone();
             break;
         }
         else if (pressed == PB_UP)
         {
-            delay(200);
+            delay(50);
             temp_offset_minutes += temp_offset_minutes / abs(temp_offset_minutes); // this is because when the minute offset is negative, since the shown value is a positive value, the up button is supposed to increment the absolute value. i.e. decrement the actual value.
             temp_offset_minutes = temp_offset_minutes % 60;
         }
         else if (pressed == PB_DOWN)
         {
-            delay(200);
+            delay(50);
             temp_offset_minutes -= temp_offset_minutes / abs(temp_offset_minutes);
             temp_offset_minutes = temp_offset_minutes % 60;
             if (temp_offset_minutes < 0)
@@ -97,7 +98,7 @@ void set_time_zone()
         }
         else if (pressed == PB_CANCEL)
         {
-            delay(200);
+            delay(50);
             break;
         }
     }
