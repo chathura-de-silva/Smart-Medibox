@@ -33,26 +33,36 @@ void setup()
     display.clearDisplay();
     display.drawBitmap(0, 0, splashScreen, 128, 64, WHITE); // This is not a modalpage. It is a splash screen. text is embedded to a bitmap.
     display.display();
-    delay(1200);
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD, 6);
+    load_user_settings(); // loads data using preferences object. defaults assigned if not stored in preferences.
+    delay(1000);
+    WiFi.begin(wifi_username, wifi_password, 6);
+
+    unsigned long currentMillis = millis();
+    unsigned long previousMillis = currentMillis;
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(250);
         show_modal_page(wifi, 0, "Waiting For Wifi", 18);
+        currentMillis = millis();
+        if (currentMillis - previousMillis >= WIFI_CONNECTION_LISTENING_TIMEOUT) // IF the limit gets exceeded, then the ESP32 will restart after getting wifi reconfigured.
+        {
+            // Serial.println("Failed to connect.");
+            show_modal_page(wifi_fail, 1000, "Wifi Failure!", 26);
+            config_wifi(); // This function is defined in webServer.cpp
+            ESP.restart();
+        }
     }
     show_modal_page(tick, 100, "Wifi Connected!", 20);
-    load_user_settings(); // loads data using preferences object. defaults assigned if not stored in preferences.
     configTime(temp_offset_hours * 3600 + temp_offset_minutes * 60, UTC_OFFSET_DST, NTP_SERVER);
     display.clearDisplay();
 }
-
-void loop()
-{
-    update_time_with_check_alarm();
-    if (digitalRead(PB_OK) == LOW)
+    void loop()
     {
-        delay(200);
-        go_to_menu();
+        update_time_with_check_alarm();
+        if (digitalRead(PB_OK) == LOW)
+        {
+            delay(200);
+            go_to_menu();
+        }
+        check_temp();
     }
-    check_temp();
-}

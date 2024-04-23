@@ -3,15 +3,19 @@
 #include <Constants.h>
 
 int current_mode = 0;
-const int max_modes = 6;
-const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Alarms", "Set Time Zone", "Reset Settings"};
+const int max_modes = 7;
+const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Alarms", "Set Time Zone", "Configure Wifi", "Reset Settings"};
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-String formatNumber(int num) {  //formats a given number to have two digits if its between 0 and 9.
-    if (num >= 0 && num <= 9) {
+String formatNumber(int num)
+{ // formats a given number to have two digits if its between 0 and 9.
+    if (num >= 0 && num <= 9)
+    {
         return "0" + String(num); // Prepend 0 if num is a single digit
-    } else {
+    }
+    else
+    {
         return String(num); // No need to modify if num is already two or more digits
     }
 }
@@ -50,33 +54,43 @@ void run_mode(int mode)
     {
         alarm_enabled = false;
         save_is_alarm_enabled();
-        show_modal_page(alarm_disable,1000,"Alarms Disabled!", 20);
+        show_modal_page(alarm_disable, 1000, "Alarms Disabled!", 20);
     }
     else if (mode == 4)
     {
         set_time_zone();
     }
-    else if (mode==5){
-       reset_preferences();
+    else if (mode == 5)
+    {
+        config_wifi();
+    }
+    else if (mode == 6)
+    {
+        
+        reset_preferences();
     }
 }
 
-void display_menu(int active_mode){
-    int row = 0; 
+void display_menu(int active_mode)
+{
+    int row = 0;
     const int padding_top = 4;
-    int page_number = 1+active_mode/5;
+    int page_number = 1 + active_mode / 5;
 
     display.clearDisplay();
-    
-    for(int i = 5*(page_number-1) ;i<min(5*page_number,max_modes) ;i++){  //Only 5 menu items displayed at a time in the display.
-        if (i == active_mode){
-            display.fillRoundRect(0,row,128,14,2,WHITE);
-            println(modes[i],0,row+padding_top,1, false, BLACK );
+
+    for (int i = 5 * (page_number - 1); i < min(5 * page_number, max_modes); i++)
+    { // Only 5 menu items displayed at a time in the display.
+        if (i == active_mode)
+        {
+            display.fillRoundRect(0, row, 128, 14, 2, WHITE);
+            println(modes[i], 0, row + padding_top, 1, false, BLACK);
         }
-        else{
-            println(modes[i],0,row+padding_top,1, false, WHITE );
+        else
+        {
+            println(modes[i], 0, row + padding_top, 1, false, WHITE);
         }
-        row+=12;
+        row += 12;
     }
     display.display();
 }
@@ -165,9 +179,13 @@ void update_time_with_check_alarm()
     }
 }
 
-void show_modal_page(const unsigned char* bitmap,int period, String text, int x_offset){ //This function is responsible for showing a provided bitmap above a given text, in full screen.
+void show_modal_page(const unsigned char *bitmap, int period, String text, int x_offset)
+{ // This function is responsible for showing a provided bitmap above a given text, in full screen.
     display.clearDisplay();
     display.drawBitmap(0, 0, bitmap, 128, 64, WHITE);
     println(text, x_offset, 50, 1, true);
-    delay(period);
+    if (period > 0)
+    {
+        delay(period);
+    }
 }

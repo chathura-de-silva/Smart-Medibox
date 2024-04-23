@@ -27,3 +27,7 @@ void save_time_zone();
 void save_alarm(int alarm);
 void reset_preferences();
 void save_is_alarm_enabled();
+void save_wifi_credentials(String username, String password);
+
+// Functions from webServer.cpp
+void config_wifi();

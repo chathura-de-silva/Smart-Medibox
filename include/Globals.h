@@ -14,6 +14,8 @@ extern bool alarm_triggered[];
 extern struct tm timeinfo;
 extern int temp_offset_hours;
 extern int temp_offset_minutes;
+extern String wifi_username;
+extern String wifi_password;
 // images
 extern const unsigned char splashScreen[];
 extern const unsigned char tick[];
@@ -24,3 +26,5 @@ extern const unsigned char alarm_ring[];
 extern const unsigned char alarm_disable[];
 extern const unsigned char medicine_time[];
 extern const unsigned char reset[];
+extern const unsigned char wifi_fail [];
+extern const unsigned char wifi_config [];

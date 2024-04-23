@@ -15,5 +15,8 @@
 #define UTC_OFFSET_DST 0 // Daytime offset is not implemented. hence kept zero to have no effect.
 #define DEFAULT_UTC_OFFSET_H 5
 #define DEFAULT_UTC_OFFSET_M 30
-#define WIFI_SSID "MSI 8690"
-#define WIFI_PASSWORD "abcdefgh"
+#define AP_SSID "Smart Medibox" //SSID and Password of the Access point created by the ESP32.
+#define AP_PASSWORD "abcdefgh"
+#define WIFI_CONNECTION_LISTENING_TIMEOUT 10000 // 10 seconds
+#define DEFAULT_WIFI_SSID "MSI 8690"
+#define DEFAULT_WIFI_PASSWORD "abcdefgh"

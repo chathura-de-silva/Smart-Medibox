@@ -17,6 +17,8 @@ void load_user_settings()
     alarm_enabled = preferences.getBool("alarm_enabled", false);
     temp_offset_hours = preferences.getInt("utc_offset_h", DEFAULT_UTC_OFFSET_H);
     temp_offset_minutes = preferences.getInt("utc_offset_m", DEFAULT_UTC_OFFSET_M);
+    wifi_username = preferences.getString("wifi_username", "");
+    wifi_password = preferences.getString("wifi_password", "");
     preferences.end();
 }
 
@@ -41,6 +43,14 @@ void save_is_alarm_enabled()
 {
     preferences.begin("settings", false);
     preferences.putBool("alarm_enabled", alarm_enabled);
+    preferences.end();
+}
+
+void save_wifi_credentials(String username, String password)
+{
+    preferences.begin("settings", false);
+    preferences.putString("wifi_username", username);
+    preferences.putString("wifi_password", password);
     preferences.end();
 }
 
