@@ -129,8 +129,8 @@ void set_alarm(int alarm)
                 {
                     alarm_triggered[i] = true;
                 }
-                alarm_triggered[alarm] = false;
             }
+            alarm_triggered[alarm] = false;
 
             show_modal_page(alarm_ring, 1000, "Alarm set to " + formatNumber(temp_hour) + ":" + formatNumber(temp_minute), 10);
             save_alarm(alarm);
