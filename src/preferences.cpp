@@ -10,7 +10,7 @@ void load_user_settings()
     preferences.begin("settings", true);
     for (int i = 0; i < n_alarms; i++)
     {
-        alarm_hours[i] = preferences.getInt("alarm_hours_" + i, 0); // default alarms set at ,1,2,3.
+        alarm_hours[i] = preferences.getInt("alarm_hours_" + i, 0); // Default(when no data in EEPROM) alarm time is 00:00. But will not trigger until user sets, since alarm_triggered is false.
         alarm_minutes[i] = preferences.getInt("alarm_minutes_" + i, 00);
         alarm_triggered[i] = preferences.getBool("alarm_triggered_" + i, false);
     }

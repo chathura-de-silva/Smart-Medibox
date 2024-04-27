@@ -76,7 +76,7 @@ void config_wifi()
                                     }
                                 }
                             }
-
+                            
                             // Display the HTML web page with login form
                             client.println("<!DOCTYPE html><html>");
                             client.println("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
@@ -142,8 +142,9 @@ void config_wifi()
 
                             // The HTTP response ends with another blank line
                             client.println();
-                            
+
                             // Break out of the while loop
+                            show_modal_page(wifi_config, -1, "Waiting for Data...", 12);
                             break;
                         }
                         else

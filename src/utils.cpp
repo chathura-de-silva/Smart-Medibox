@@ -66,7 +66,7 @@ void run_mode(int mode)
     }
     else if (mode == 6)
     {
-        
+
         reset_preferences();
     }
 }
@@ -169,7 +169,9 @@ void update_time_with_check_alarm()
     {
         for (int i = 0; i < n_alarms; i++)
         {
-            // Serial.println("hours : " +  String(timeinfo.tm_hour) + " Alram hours : " + String(alarm_hours[i])); //for debugging.
+            // Serial.println("Alarm No: " + String(i) + "Already Triggered : " + String(alarm_triggered[i]));  // for debugging.
+            // Serial.println("H : " + String(timeinfo.tm_hour) + " Alarm hours : " + String(alarm_hours[i]));  // for debugging.
+            // Serial.println("M : " + String(timeinfo.tm_min) + " Alarm hours : " + String(alarm_minutes[i])); // for debugging.
             if (alarm_triggered[i] == false && alarm_hours[i] == timeinfo.tm_hour && alarm_minutes[i] == timeinfo.tm_min)
             {
                 ring_alarm();
