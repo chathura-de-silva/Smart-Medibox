@@ -6,7 +6,7 @@ DHT dhtSensor(DHTPIN, DHTTYPE);
 
 int animationFrameCounter = 30;
 
-void check_temp()
+float check_temp()
 {
     float temperature = dhtSensor.readTemperature();
     float humidity = dhtSensor.readHumidity();
@@ -45,4 +45,5 @@ void check_temp()
         }
     }
     display.display();
+    return temperature;
 }

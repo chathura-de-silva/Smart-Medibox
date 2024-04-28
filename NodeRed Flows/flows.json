@@ -1,0 +1,49 @@
+[
+    {
+        "id": "760f21ebc2564116",
+        "type": "ui_gauge",
+        "z": "204ec4eb1b6e858f",
+        "name": "",
+        "group": "d4ac752d0c0c9669",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "0.33",
+        "seg2": "0.66",
+        "diff": false,
+        "className": "",
+        "x": 770,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "d4ac752d0c0c9669",
+        "type": "ui_group",
+        "name": "Light Intensity Statistics",
+        "tab": "5285bdb0b95877f9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5285bdb0b95877f9",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
