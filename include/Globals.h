@@ -1,10 +1,12 @@
 #include <Adafruit_SSD1306.h>
 #include <DHT.h>
 #include <Preferences.h>
+#include <Servo.h>
 
 extern Adafruit_SSD1306 display;
 extern DHT dhtSensor;
 extern Preferences preferences;
+extern Servo servo_motor;
 
 extern bool alarm_enabled;
 extern const int n_alarms;
@@ -16,6 +18,7 @@ extern int temp_offset_hours;
 extern int temp_offset_minutes;
 extern String wifi_username;
 extern String wifi_password;
+extern int servo_angle;
 // images
 extern const unsigned char splashScreen[];
 extern const unsigned char tick[];

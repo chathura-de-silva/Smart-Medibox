@@ -5,7 +5,6 @@
 #include <DHT.h>
 #include <Adafruit_Sensor.h>
 #include <WiFi.h>
-#include <Servo.h>
 
 // Header files written explicitly for the project.
 #include <Constants.h>
@@ -24,6 +23,7 @@ void setup()
     pinMode(LDR_2, INPUT);
 
     dhtSensor.begin();
+    servo_motor.attach(SERVO);
 
     Serial.begin(115200);
 
@@ -58,13 +58,13 @@ void setup()
     show_modal_page(tick, 100, "Wifi Connected!", 20);
 
     setupMQTT();
-    brokerConnectMQTT();
 
     configTime(temp_offset_hours * 3600 + temp_offset_minutes * 60, UTC_OFFSET_DST, NTP_SERVER);
     display.clearDisplay();
 }
 void loop()
 {
+    brokerConnectMQTT();
     update_time_with_check_alarm();
     if (digitalRead(PB_OK) == LOW)
     {

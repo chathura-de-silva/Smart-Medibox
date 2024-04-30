@@ -11,6 +11,7 @@ void update_time_with_check_alarm();
 void println(String text, int column, int row, int text_size, bool display_now = false, int color = WHITE);
 void println(tm timeinfo, const char *text, int column, int row, int text_size, bool display_now = false, int color = WHITE);
 void show_modal_page(const unsigned char *bitmap, int period, String text, int x_offset);
+void turn_servo_motor(int angle);
 
 // FUnctions from temperature.cpp
 float check_temp();

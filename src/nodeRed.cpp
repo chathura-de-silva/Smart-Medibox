@@ -15,6 +15,7 @@ void brokerConnectMQTT()
         if (mqttClient.connect(MQTT_DEVICE_ID))
         {
             Serial.println("connected");
+            mqttClient.subscribe(DATA_RECEPTION_TOPIC);
         }
         else
         {
@@ -23,25 +24,29 @@ void brokerConnectMQTT()
             delay(5000);
         }
     }
+    mqttClient.loop();
 }
 
-void dataReceptionCallback(char *topic, byte *payload, unsigned int length)
+void dataReceptionCallback(char *topic, byte *message, unsigned int length)
 {
 
     Serial.print("Message arrived [");
     Serial.print(topic);
     Serial.print("] ");
 
+    String degree;
     for (int i = 0; i < length; i++)
     {
-        Serial.print((char)payload[i]);
+        degree += (char)message[i]; // Adjust this code if you are sending something more than just the degree of rotation of the servo motor.
     }
-    Serial.println();
-
-    char payloadCharArray[length];
-    for (int i = 0; i < length; i++)
+    Serial.println(degree); // for debugging
+    if (strcmp(topic, DATA_RECEPTION_TOPIC) == 0)
     {
-        payloadCharArray[i] = (char)payload[i];
+        turn_servo_motor(degree.toInt());
+    }
+    else
+    {
+        Serial.println("Invalid command");
     }
 }
 
