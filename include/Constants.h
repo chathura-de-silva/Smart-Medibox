@@ -28,3 +28,24 @@
 #define MQTT_DEVICE_ID "SmartMedibox-CSE"
 #define DATA_SENDING_TOPIC "MEDIBOX_DATA"
 #define DATA_RECEPTION_TOPIC "MEDIBOX_MOTOR_DATA"
+
+
+// LDR Parameters for calculating Luminance and its change.
+#define EPSILON 0.03
+#define TEMPSILON 0.01
+//Linear mapping for LDRs. If you want to use the linear mapping, set this to 1. Otherwise set it to 0.
+#define LINEAR_MAPPING 0
+/*Since the values are capped to a range within 0 and 1 and
+the luminance can be infinitely large, a finite number is
+specified as infinity so that all numbers above that are considered as 1.
+If you are using linear mapping, the maximum value recommended for FINITE_INFINITY is 4096.0 
+and otherwise it is 10000 by default, but will have to change according to the LDR used.
+Anything above that makes readings extremeley smaller.*/
+#define FINITE_INFINITY 10000
+/*Following "GAMMA,RL10,RESISTOR,VCC" are to calculate lux value usng analog input from LDRs. 
+You don't need to change these values if you are using the linear mapping.
+(Linear mapping is less accurate, but may be good enough for you. The other way is recommended.)*/
+#define GAMMA 0.7
+#define RL10 50
+#define RESISTOR 10000
+#define VCC 3.3
