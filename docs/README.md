@@ -57,8 +57,7 @@ lib_deps =
 *   Platform I/O with Arduino Framework Set up.
 *   Relevant hardware for testing if you are not intended to do simulations.
 *	Node-Red Installed Environment and an MQTT Broker (Both optional)
-<br>
-<br>
+
 
 ## Medibox Setup
 *   Clone the repository.
