@@ -1,0 +1,2961 @@
+[
+    {
+        "id": "6ee6616a9d220168",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "18cc067c93d5298d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a19c913059d26c12",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e794870d45f595e7",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Server",
+        "broker": "https://test.mosquitto.org/",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "5285bdb0b95877f9",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "813da33c31ed533f",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-custom",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#94a4d6",
+                "baseFont": "Trebuchet MS,Helvetica,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Medibox Default",
+                "default": "#4B7930",
+                "baseColor": "#ffffff",
+                "baseFont": "Verdana,Verdana,Geneva,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#4B7930",
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0d0d0d",
+                    "edited": true
+                },
+                "page-backgroundColor": {
+                    "value": "#000000",
+                    "edited": true
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#0d0d0d",
+                    "edited": true
+                },
+                "group-textColor": {
+                    "value": "#e0e0e0",
+                    "edited": true
+                },
+                "group-borderColor": {
+                    "value": "#1a1a1a",
+                    "edited": true
+                },
+                "group-backgroundColor": {
+                    "value": "#000000",
+                    "edited": true
+                },
+                "widget-textColor": {
+                    "value": "#c7c7c7",
+                    "edited": true
+                },
+                "widget-backgroundColor": {
+                    "value": "#6e6e6e",
+                    "edited": true
+                },
+                "widget-borderColor": {
+                    "value": "#000000",
+                    "edited": true
+                },
+                "base-font": {
+                    "value": "Verdana,Verdana,Geneva,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Smart Medibox",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "YYYY/MM/DD",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 12,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 4,
+                "py": 4
+            }
+        }
+    },
+    {
+        "id": "d4ac752d0c0c9669",
+        "type": "ui_group",
+        "name": "Maximum Light Intensity",
+        "tab": "5285bdb0b95877f9",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "505c7b7f55a8a63e",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "5285bdb0b95877f9",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fdb57b529356aa4d",
+        "type": "ui_tab",
+        "name": "Settings",
+        "icon": "settings",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "59cb6c35f86cce23",
+        "type": "ui_group",
+        "name": "Light Control Settings",
+        "tab": "fdb57b529356aa4d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d33e43830ab0f44a",
+        "type": "ui_spacer",
+        "z": "6ee6616a9d220168",
+        "name": "spacer",
+        "group": "d4ac752d0c0c9669",
+        "order": 2,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "ae2bb2c463f76773",
+        "type": "ui_spacer",
+        "z": "6ee6616a9d220168",
+        "name": "spacer",
+        "group": "d4ac752d0c0c9669",
+        "order": 4,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "18956602586dd032",
+        "type": "ui_spacer",
+        "z": "6ee6616a9d220168",
+        "name": "spacer",
+        "group": "505c7b7f55a8a63e",
+        "order": 2,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "8352d8f943e7839c",
+        "type": "ui_spacer",
+        "z": "18cc067c93d5298d",
+        "name": "spacer",
+        "group": "d4ac752d0c0c9669",
+        "order": 2,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7cbdb8a9564ef010",
+        "type": "ui_spacer",
+        "z": "18cc067c93d5298d",
+        "name": "spacer",
+        "group": "d4ac752d0c0c9669",
+        "order": 4,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "5aae806bf57d82e9",
+        "type": "ui_spacer",
+        "z": "18cc067c93d5298d",
+        "name": "spacer",
+        "group": "505c7b7f55a8a63e",
+        "order": 2,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "6d87a67a88fbc216",
+        "type": "ui_spacer",
+        "z": "a19c913059d26c12",
+        "name": "spacer",
+        "group": "d4ac752d0c0c9669",
+        "order": 2,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "bb9d266e5402443c",
+        "type": "ui_spacer",
+        "z": "a19c913059d26c12",
+        "name": "spacer",
+        "group": "d4ac752d0c0c9669",
+        "order": 4,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7760143006f4af7f",
+        "type": "ui_spacer",
+        "z": "a19c913059d26c12",
+        "name": "spacer",
+        "group": "505c7b7f55a8a63e",
+        "order": 2,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "43c30839dfb50cf9",
+        "type": "mqtt in",
+        "z": "6ee6616a9d220168",
+        "name": "MQTT IN",
+        "topic": "MEDIBOX_DATA",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "e794870d45f595e7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 460,
+        "wires": [
+            [
+                "afebc7f2776ba2df",
+                "d40f5cee498a4dde"
+            ]
+        ]
+    },
+    {
+        "id": "486339f0c7fd9406",
+        "type": "debug",
+        "z": "6ee6616a9d220168",
+        "name": "debug incoming data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "47a2e85cca305542",
+        "type": "ui_gauge",
+        "z": "6ee6616a9d220168",
+        "name": "Light Intensity Gauge",
+        "group": "d4ac752d0c0c9669",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Realtime",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#e6e600",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "0.33",
+        "seg2": "0.66",
+        "diff": false,
+        "className": "",
+        "x": 920,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "afebc7f2776ba2df",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "max_light()",
+        "func": "let ldr1 = parseFloat(msg.payload[\"LDR1\"]);\nlet ldr2 = parseFloat(msg.payload[\"LDR2\"]);\nlet maxLight;\nlet highLDR;\n\nif (!isNaN(ldr1) && !isNaN(ldr2)) {\n    if (ldr1 > ldr2) {\n        maxLight = ldr1.toFixed(2);\n        highLDR =  'LDR 1';    \n    } else {\n        maxLight = ldr2.toFixed(2);\n        highLDR =  'LDR 2'; \n    }\n    global.set(\"maxLight\",maxLight);\n    global.set(\"highLDR\",highLDR);\n     return { payload: maxLight, high: highLDR };\n} else {\n    return { payload: -1,high: 'No Data!'  };\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 460,
+        "wires": [
+            [
+                "dd855af6ca7c217c",
+                "3c3091a695605588"
+            ]
+        ]
+    },
+    {
+        "id": "8f891054661e170f",
+        "type": "ui_chart",
+        "z": "6ee6616a9d220168",
+        "name": "Light Intensity Plot",
+        "group": "d4ac752d0c0c9669",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Last 15 Minutes",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "15",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "138886171e01b5fd",
+        "type": "ui_toast",
+        "z": "6ee6616a9d220168",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "Error Fetching Light Data!",
+        "topic": "",
+        "name": "Error Fetching Light Data!",
+        "x": 930,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "dd855af6ca7c217c",
+        "type": "switch",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "-1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 670,
+        "y": 460,
+        "wires": [
+            [
+                "138886171e01b5fd",
+                "486339f0c7fd9406"
+            ],
+            [
+                "486339f0c7fd9406",
+                "bce10e351b8cd875",
+                "47a2e85cca305542",
+                "17b300391133b259",
+                "6ce4d8861df4ae1f"
+            ]
+        ]
+    },
+    {
+        "id": "d823163ba0f74800",
+        "type": "ui_gauge",
+        "z": "6ee6616a9d220168",
+        "name": "Temperature Gauge",
+        "group": "505c7b7f55a8a63e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Realtime",
+        "label": "Celcius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#287be6",
+            "#04e600",
+            "#ca3838"
+        ],
+        "seg1": "26",
+        "seg2": "32",
+        "diff": false,
+        "className": "",
+        "x": 920,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d40f5cee498a4dde",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "Temperature()",
+        "func": "\nreturn {payload: parseFloat(msg.payload[\"Temperature\"]).toFixed(2)};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "e1e7b72234c1bdf0"
+            ]
+        ]
+    },
+    {
+        "id": "bce10e351b8cd875",
+        "type": "delay",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "6",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 890,
+        "y": 100,
+        "wires": [
+            [
+                "8f891054661e170f"
+            ]
+        ]
+    },
+    {
+        "id": "0c092473fb5adae9",
+        "type": "delay",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 890,
+        "y": 220,
+        "wires": [
+            [
+                "06f55646b53e7f83"
+            ]
+        ]
+    },
+    {
+        "id": "06f55646b53e7f83",
+        "type": "ui_chart",
+        "z": "6ee6616a9d220168",
+        "name": "Temperature Plot",
+        "group": "505c7b7f55a8a63e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Last Hour",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1e7b72234c1bdf0",
+        "type": "switch",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 690,
+        "y": 180,
+        "wires": [
+            [
+                "d823163ba0f74800",
+                "0c092473fb5adae9"
+            ],
+            [
+                "768050012c3b30c6"
+            ]
+        ]
+    },
+    {
+        "id": "768050012c3b30c6",
+        "type": "ui_toast",
+        "z": "6ee6616a9d220168",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "Error Fetching Temperature Data!",
+        "topic": "",
+        "name": "Error Fetching Temperature Data!",
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "3c3091a695605588",
+        "type": "ui_text",
+        "z": "6ee6616a9d220168",
+        "group": "d4ac752d0c0c9669",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Source : ",
+        "format": "{{msg.high}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 880,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "9debf65fc4992fcd",
+        "type": "ui_slider",
+        "z": "6ee6616a9d220168",
+        "name": "Min Angle Slider",
+        "label": "Minimum Angle",
+        "tooltip": "",
+        "group": "59cb6c35f86cce23",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "120",
+        "step": "1",
+        "className": "",
+        "x": 480,
+        "y": 740,
+        "wires": [
+            [
+                "43b1362815afd894"
+            ]
+        ]
+    },
+    {
+        "id": "7a6c382432356b94",
+        "type": "ui_slider",
+        "z": "6ee6616a9d220168",
+        "name": "Control Factor Slider",
+        "label": "Control Factor",
+        "tooltip": "",
+        "group": "59cb6c35f86cce23",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "1",
+        "step": "0.01",
+        "className": "",
+        "x": 480,
+        "y": 820,
+        "wires": [
+            [
+                "f3ba713c8f533a75"
+            ]
+        ]
+    },
+    {
+        "id": "a1f1b3c69936edb5",
+        "type": "mqtt out",
+        "z": "6ee6616a9d220168",
+        "name": "MQTT OUT",
+        "topic": "MEDIBOX_MOTOR_DATA",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e794870d45f595e7",
+        "x": 1270,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "aaf66522a5da2ef5",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "calculateAngle()",
+        "func": "let minAngle = parseFloat(flow.get(\"minAngle\"));\nlet controlFactor = parseFloat(flow.get(\"controlFactor\"));\nlet maxLight = parseFloat(global.get(\"maxLight\"));\nlet higherLDR = global.get(\"highLDR\");\nlet constD;\nlet angle;\n\nif (higherLDR === \"LDR 1\"){\n        constD = 1.5;\n    }\nelse{\n        constD = 0.5;\n    }\nangle = Math.round(Math.min(minAngle*constD+(180-minAngle)*maxLight*controlFactor,180));\nreturn {payload:angle};\n// return {a:minAngle,b:controlFactor,c:medicineType,d:maxLight,e:higherLDR,f:angle,g:constD}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 820,
+        "wires": [
+            [
+                "73c7edb26ec50a28"
+            ]
+        ]
+    },
+    {
+        "id": "99cf7bdf35e5367e",
+        "type": "ui_dropdown",
+        "z": "6ee6616a9d220168",
+        "name": "Medicine Type Dropdown",
+        "label": "Select the Medicine Type",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "59cb6c35f86cce23",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Custom",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "Type A",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "Type B",
+                "value": 3,
+                "type": "num"
+            },
+            {
+                "label": "Type C",
+                "value": 4,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 430,
+        "y": 900,
+        "wires": [
+            [
+                "cacce1ea516280d9"
+            ]
+        ]
+    },
+    {
+        "id": "36cf1d142d8e2bb1",
+        "type": "debug",
+        "z": "6ee6616a9d220168",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "9dda2947166c388b",
+        "type": "trigger",
+        "z": "6ee6616a9d220168",
+        "name": "Default Starting Parameters Trigger",
+        "op1": "{\"minAngle\":30,\"controlFactor\":0.75,\"medicineType\":1}",
+        "op2": "0",
+        "op1type": "json",
+        "op2type": "str",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 220,
+        "y": 620,
+        "wires": [
+            [
+                "58b1b9b13f788ad8",
+                "4f349b6c36e1670d",
+                "7e3a3d24648fdb5d"
+            ]
+        ],
+        "info": "Sends degault values and triggers starting of sending angles to the medibox.\r\nThis trigger activates when the light data is ready."
+    },
+    {
+        "id": "58b1b9b13f788ad8",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "filterMinAngle()",
+        "func": "return { payload: msg.payload[\"minAngle\"] };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 740,
+        "wires": [
+            [
+                "9debf65fc4992fcd"
+            ]
+        ]
+    },
+    {
+        "id": "4f349b6c36e1670d",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "filterControlFactor()",
+        "func": "\nreturn {payload:msg.payload[\"controlFactor\"]};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 820,
+        "wires": [
+            [
+                "7a6c382432356b94"
+            ]
+        ]
+    },
+    {
+        "id": "7e3a3d24648fdb5d",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "filterMedType()",
+        "func": "return {payload: msg.payload[\"medicineType\"]};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 900,
+        "wires": [
+            [
+                "99cf7bdf35e5367e"
+            ]
+        ]
+    },
+    {
+        "id": "43b1362815afd894",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "helper()",
+        "func": "flow.set(\"minAngle\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 740,
+        "wires": [
+            [
+                "aaf66522a5da2ef5",
+                "14a002822b447e55"
+            ]
+        ]
+    },
+    {
+        "id": "f3ba713c8f533a75",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "helper()",
+        "func": "flow.set(\"controlFactor\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 820,
+        "wires": [
+            [
+                "aaf66522a5da2ef5",
+                "14a002822b447e55"
+            ]
+        ]
+    },
+    {
+        "id": "e098dcad95d29a61",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "Update Sliders()",
+        "func": "flow.set(\"medicineType\",msg.payload);\nlet defMedData = flow.get(\"defMedConfig\");\nlet minAngle;\nlet controlFactor;\n\nif (msg.payload ===2){\n    minAngle = defMedData[\"A\"][\"minAngle\"];\n    controlFactor =  defMedData[\"A\"][\"controlFactor\"];\n}\nelse if (msg.payload ===3){\n    minAngle =  defMedData[\"B\"][\"minAngle\"];\n    controlFactor = defMedData[\"B\"][\"controlFactor\"];\n}\nelse{\n    minAngle = defMedData[\"C\"][\"minAngle\"];\n    controlFactor = defMedData[\"C\"][\"controlFactor\"];\n}\nreturn {payload:{\"minAngle\": minAngle, \"controlFactor\": controlFactor}};\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 900,
+        "wires": [
+            [
+                "4f349b6c36e1670d",
+                "58b1b9b13f788ad8"
+            ]
+        ]
+    },
+    {
+        "id": "6ce4d8861df4ae1f",
+        "type": "rbe",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "func": "deadbandEq",
+        "gap": "5%",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 720,
+        "y": 600,
+        "wires": [
+            [
+                "aaf66522a5da2ef5"
+            ]
+        ]
+    },
+    {
+        "id": "73c7edb26ec50a28",
+        "type": "rbe",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "func": "deadbandEq",
+        "gap": "10",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1100,
+        "y": 820,
+        "wires": [
+            [
+                "a1f1b3c69936edb5",
+                "36cf1d142d8e2bb1"
+            ]
+        ]
+    },
+    {
+        "id": "1f7b5714b559d636",
+        "type": "switch",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 750,
+        "y": 900,
+        "wires": [
+            [
+                "e098dcad95d29a61"
+            ]
+        ]
+    },
+    {
+        "id": "cacce1ea516280d9",
+        "type": "rbe",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 610,
+        "y": 900,
+        "wires": [
+            [
+                "1f7b5714b559d636"
+            ]
+        ]
+    },
+    {
+        "id": "17b300391133b259",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "defMedConfig()",
+        "func": "return msg;\n\n/*This function (On start tab) contains the default values \nfor the parameters \"controlFactor\" and \"minAngle\" for three medicine presets.\nIt sets them as flow variables on start.\nThis is required for updating the UI when ever a preset medicine isselected in the\ndrop down, but user changes a slider to a non preset configuration.\n(Otherwise their will be infinity loop of updating\nthe sliders and the dropdown.)*/",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nflow.set(\"defMedConfig\", {A: { minAngle: 0, controlFactor: 0.1 }, B: { minAngle: 45, controlFactor: 0.5 }, C: { minAngle: 20, controlFactor: 1 }});",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 540,
+        "wires": [
+            [
+                "9dda2947166c388b"
+            ]
+        ]
+    },
+    {
+        "id": "14a002822b447e55",
+        "type": "function",
+        "z": "6ee6616a9d220168",
+        "name": "resetDropdowmToCustom()",
+        "func": "let defMedData = flow.get(\"defMedConfig\");\nlet currentMA= flow.get(\"minAngle\");\nlet currentCF = flow.get(\"controlFactor\");\n\nlet isNotA = (currentCF != defMedData[\"A\"][\"controlFactor\"] || currentMA != defMedData[\"A\"][\"minAngle\"]);\nlet isNotB = (currentCF != defMedData[\"B\"][\"controlFactor\"] || currentMA != defMedData[\"B\"][\"minAngle\"]);\nlet isNotC = (currentCF != defMedData[\"C\"][\"controlFactor\"] || currentMA != defMedData[\"C\"][\"minAngle\"]);\n\nif (isNotA && isNotB && isNotC){\n    return {payload:1};\n}\nelse{\n    return {payload:\"block\"};\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 1060,
+        "wires": [
+            [
+                "7bf5248d146144f4"
+            ]
+        ]
+    },
+    {
+        "id": "7bf5248d146144f4",
+        "type": "switch",
+        "z": "6ee6616a9d220168",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "block",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 980,
+        "wires": [
+            [
+                "99cf7bdf35e5367e"
+            ]
+        ]
+    },
+    {
+        "id": "aaf86c2a5b89a525",
+        "type": "mqtt in",
+        "z": "18cc067c93d5298d",
+        "name": "MQTT IN",
+        "topic": "MEDIBOX_DATA",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "e794870d45f595e7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "4d6b5ddf322a188a",
+                "849fbcb63ae28ee8"
+            ]
+        ]
+    },
+    {
+        "id": "2dfcd8844eb2b220",
+        "type": "debug",
+        "z": "18cc067c93d5298d",
+        "name": "debug incoming data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6d26c0d8af9fa319",
+        "type": "ui_gauge",
+        "z": "18cc067c93d5298d",
+        "name": "Light Intensity Gauge",
+        "group": "d4ac752d0c0c9669",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Realtime",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#e6e600",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "0.33",
+        "seg2": "0.66",
+        "diff": false,
+        "className": "",
+        "x": 760,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "4d6b5ddf322a188a",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "max_light()",
+        "func": "let ldr1 = parseFloat(msg.payload[\"LDR1\"]);\nlet ldr2 = parseFloat(msg.payload[\"LDR2\"]);\nlet maxLight;\nlet highLDR;\n\nif (!isNaN(ldr1) && !isNaN(ldr2)) {\n    if (ldr1 > ldr2) {\n        maxLight = ldr1.toFixed(2);\n        highLDR =  'LDR 1';    \n    } else {\n        maxLight = ldr2.toFixed(2);\n        highLDR =  'LDR 2'; \n    }\n    global.set(\"maxLight\",maxLight);\n    global.set(\"highLDR\",highLDR);\n     return { payload: maxLight, high: highLDR };\n} else {\n    return { payload: -1,high: 'No Data!'  };\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 380,
+        "wires": [
+            [
+                "f80f323954949893",
+                "593b0f745dd35731"
+            ]
+        ]
+    },
+    {
+        "id": "de81ef9403a70c0b",
+        "type": "ui_chart",
+        "z": "18cc067c93d5298d",
+        "name": "Light Intensity Plot",
+        "group": "d4ac752d0c0c9669",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Last 15 Minutes",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "15",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1130,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "962a7a33facbdd7d",
+        "type": "ui_toast",
+        "z": "18cc067c93d5298d",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "Error Fetching Light Data!",
+        "topic": "",
+        "name": "Error Fetching Light Data!",
+        "x": 950,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "f80f323954949893",
+        "type": "switch",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "-1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 380,
+        "wires": [
+            [
+                "2dfcd8844eb2b220",
+                "1cfd5d52d0dcee8e"
+            ],
+            [
+                "2dfcd8844eb2b220",
+                "6d26c0d8af9fa319",
+                "225dd7bf2dcc0a79",
+                "ec840ab8e7d5dfa8",
+                "a1d2da4705414223"
+            ]
+        ]
+    },
+    {
+        "id": "676ddd8f708b2462",
+        "type": "ui_gauge",
+        "z": "18cc067c93d5298d",
+        "name": "Temperature Gauge",
+        "group": "505c7b7f55a8a63e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Realtime",
+        "label": "Celcius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#287be6",
+            "#04e600",
+            "#ca3838"
+        ],
+        "seg1": "26",
+        "seg2": "32",
+        "diff": false,
+        "className": "",
+        "x": 660,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "849fbcb63ae28ee8",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "Temperature()",
+        "func": "\nreturn {payload: parseFloat(msg.payload[\"Temperature\"]).toFixed(2)};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "7753c7ee18ad60ac"
+            ]
+        ]
+    },
+    {
+        "id": "d934e0e03f38b7ef",
+        "type": "ui_chart",
+        "z": "18cc067c93d5298d",
+        "name": "Temperature Plot",
+        "group": "505c7b7f55a8a63e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Last Hour",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1090,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7753c7ee18ad60ac",
+        "type": "switch",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "676ddd8f708b2462",
+                "b49f879606f733ce"
+            ],
+            [
+                "8dd07d737150ee4f"
+            ]
+        ]
+    },
+    {
+        "id": "6b5427f4ebc16db4",
+        "type": "ui_toast",
+        "z": "18cc067c93d5298d",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "Error Fetching Temperature Data!",
+        "topic": "",
+        "name": "Error Fetching Temperature Data!",
+        "x": 880,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "593b0f745dd35731",
+        "type": "ui_text",
+        "z": "18cc067c93d5298d",
+        "group": "d4ac752d0c0c9669",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Source : ",
+        "format": "{{msg.high}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 720,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "625e0464b9463490",
+        "type": "ui_slider",
+        "z": "18cc067c93d5298d",
+        "name": "Min Angle Slider",
+        "label": "Minimum Angle",
+        "tooltip": "",
+        "group": "59cb6c35f86cce23",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "120",
+        "step": "1",
+        "className": "",
+        "x": 700,
+        "y": 1020,
+        "wires": [
+            [
+                "c4bcc1f4e2e77257"
+            ]
+        ]
+    },
+    {
+        "id": "9ea3690c204d3522",
+        "type": "ui_slider",
+        "z": "18cc067c93d5298d",
+        "name": "Control Factor Slider",
+        "label": "Control Factor",
+        "tooltip": "",
+        "group": "59cb6c35f86cce23",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "1",
+        "step": "0.01",
+        "className": "",
+        "x": 740,
+        "y": 860,
+        "wires": [
+            [
+                "9fbf6858d3b2b7cc"
+            ]
+        ]
+    },
+    {
+        "id": "d9fd65fb26699848",
+        "type": "mqtt out",
+        "z": "18cc067c93d5298d",
+        "name": "MQTT OUT",
+        "topic": "MEDIBOX_MOTOR_DATA",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e794870d45f595e7",
+        "x": 1530,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "2e33d40201b5f672",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "calculateAngle()",
+        "func": "let minAngle = parseFloat(flow.get(\"minAngle\"));\nlet controlFactor = parseFloat(flow.get(\"controlFactor\"));\nlet maxLight = parseFloat(global.get(\"maxLight\"));\nlet higherLDR = global.get(\"highLDR\");\nlet constD;\nlet angle;\n\nif (higherLDR === \"LDR 1\"){\n        constD = 1.5;\n    }\nelse{\n        constD = 0.5;\n    }\nangle = Math.round(Math.min(minAngle*constD+(180-minAngle)*maxLight*controlFactor,180));\nreturn {payload:angle};\n// return {a:minAngle,b:controlFactor,c:medicineType,d:maxLight,e:higherLDR,f:angle,g:constD}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 860,
+        "wires": [
+            [
+                "e1128276c5a446bc"
+            ]
+        ]
+    },
+    {
+        "id": "c6d41f17778b020d",
+        "type": "ui_dropdown",
+        "z": "18cc067c93d5298d",
+        "name": "Medicine Type Dropdown",
+        "label": "Select the Medicine Type",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "59cb6c35f86cce23",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Custom",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "Type A",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "Type B",
+                "value": 3,
+                "type": "num"
+            },
+            {
+                "label": "Type C",
+                "value": 4,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 730,
+        "y": 680,
+        "wires": [
+            [
+                "7c70f85f1f53a313"
+            ]
+        ]
+    },
+    {
+        "id": "f3d62f0ddc57af2f",
+        "type": "debug",
+        "z": "18cc067c93d5298d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "bd73181b6da66569",
+        "type": "trigger",
+        "z": "18cc067c93d5298d",
+        "name": "Default Starting Parameters Trigger",
+        "op1": "{\"minAngle\":30,\"controlFactor\":0.75,\"medicineType\":1}",
+        "op2": "0",
+        "op1type": "json",
+        "op2type": "str",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 200,
+        "y": 680,
+        "wires": [
+            [
+                "07b8842da674b372",
+                "666b35f4793949ec",
+                "4110aad0a5130ffc"
+            ]
+        ],
+        "info": "Sends degault values and triggers starting of sending angles to the medibox.\r\nThis trigger activates when the light data is ready."
+    },
+    {
+        "id": "07b8842da674b372",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "filterMinAngle()",
+        "func": "return { payload: msg.payload[\"minAngle\"] };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1020,
+        "wires": [
+            [
+                "625e0464b9463490"
+            ]
+        ]
+    },
+    {
+        "id": "666b35f4793949ec",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "filterControlFactor()",
+        "func": "\nreturn {payload:msg.payload[\"controlFactor\"]};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 860,
+        "wires": [
+            [
+                "9ea3690c204d3522"
+            ]
+        ]
+    },
+    {
+        "id": "4110aad0a5130ffc",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "filterMedType()",
+        "func": "return {payload: msg.payload[\"medicineType\"]};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 680,
+        "wires": [
+            [
+                "c6d41f17778b020d"
+            ]
+        ]
+    },
+    {
+        "id": "c4bcc1f4e2e77257",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "helper()",
+        "func": "flow.set(\"minAngle\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 1020,
+        "wires": [
+            [
+                "2e33d40201b5f672",
+                "52e189295bb01740"
+            ]
+        ]
+    },
+    {
+        "id": "9fbf6858d3b2b7cc",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "helper()",
+        "func": "flow.set(\"controlFactor\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 860,
+        "wires": [
+            [
+                "2e33d40201b5f672",
+                "52e189295bb01740"
+            ]
+        ]
+    },
+    {
+        "id": "75ac48309e4c07e2",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "Update Sliders()",
+        "func": "flow.set(\"medicineType\",msg.payload);\nlet defMedData = flow.get(\"defMedConfig\");\nlet minAngle;\nlet controlFactor;\n\nif (msg.payload ===2){\n    minAngle = defMedData[\"A\"][\"minAngle\"];\n    controlFactor =  defMedData[\"A\"][\"controlFactor\"];\n}\nelse if (msg.payload ===3){\n    minAngle =  defMedData[\"B\"][\"minAngle\"];\n    controlFactor = defMedData[\"B\"][\"controlFactor\"];\n}\nelse{\n    minAngle = defMedData[\"C\"][\"minAngle\"];\n    controlFactor = defMedData[\"C\"][\"controlFactor\"];\n}\nreturn {payload:{\"minAngle\": minAngle, \"controlFactor\": controlFactor}};\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 680,
+        "wires": [
+            [
+                "666b35f4793949ec",
+                "07b8842da674b372"
+            ]
+        ]
+    },
+    {
+        "id": "ec840ab8e7d5dfa8",
+        "type": "rbe",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "func": "deadbandEq",
+        "gap": "5%",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 720,
+        "y": 560,
+        "wires": [
+            [
+                "2e33d40201b5f672"
+            ]
+        ]
+    },
+    {
+        "id": "e1128276c5a446bc",
+        "type": "rbe",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "func": "deadbandEq",
+        "gap": "10",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1360,
+        "y": 860,
+        "wires": [
+            [
+                "d9fd65fb26699848",
+                "f3d62f0ddc57af2f"
+            ]
+        ]
+    },
+    {
+        "id": "c91c1f36272d4f18",
+        "type": "switch",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 1070,
+        "y": 680,
+        "wires": [
+            [
+                "75ac48309e4c07e2"
+            ]
+        ]
+    },
+    {
+        "id": "7c70f85f1f53a313",
+        "type": "rbe",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 930,
+        "y": 680,
+        "wires": [
+            [
+                "c91c1f36272d4f18"
+            ]
+        ]
+    },
+    {
+        "id": "225dd7bf2dcc0a79",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "defMedConfig()",
+        "func": "return msg;\n\n/*This function (On start tab) contains the default values \nfor the parameters \"controlFactor\" and \"minAngle\" for three medicine presets.\nIt sets them as flow variables on start.\nThis is required for updating the UI when ever a preset medicine isselected in the\ndrop down, but user changes a slider to a non preset configuration.\n(Otherwise their will be infinity loop of updating\nthe sliders and the dropdown.)*/",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nflow.set(\"defMedConfig\", {A: { minAngle: 0, controlFactor: 0.1 }, B: { minAngle: 45, controlFactor: 0.5 }, C: { minAngle: 20, controlFactor: 1 }});",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 600,
+        "wires": [
+            [
+                "bd73181b6da66569"
+            ]
+        ]
+    },
+    {
+        "id": "52e189295bb01740",
+        "type": "function",
+        "z": "18cc067c93d5298d",
+        "name": "resetDropdowmToCustom()",
+        "func": "let defMedData = flow.get(\"defMedConfig\");\nlet currentMA= flow.get(\"minAngle\");\nlet currentCF = flow.get(\"controlFactor\");\n\nlet isNotA = (currentCF != defMedData[\"A\"][\"controlFactor\"] || currentMA != defMedData[\"A\"][\"minAngle\"]);\nlet isNotB = (currentCF != defMedData[\"B\"][\"controlFactor\"] || currentMA != defMedData[\"B\"][\"minAngle\"]);\nlet isNotC = (currentCF != defMedData[\"C\"][\"controlFactor\"] || currentMA != defMedData[\"C\"][\"minAngle\"]);\n\nif (isNotA && isNotB && isNotC){\n    return {payload:1};\n}\nelse{\n    return {payload:\"block\"};\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 1020,
+        "wires": [
+            [
+                "dda0e9ced4b1c697"
+            ]
+        ]
+    },
+    {
+        "id": "dda0e9ced4b1c697",
+        "type": "switch",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "block",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 760,
+        "wires": [
+            [
+                "c6d41f17778b020d"
+            ]
+        ]
+    },
+    {
+        "id": "8dd07d737150ee4f",
+        "type": "rbe",
+        "z": "18cc067c93d5298d",
+        "name": "Block Repeat",
+        "func": "rbei",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 630,
+        "y": 180,
+        "wires": [
+            [
+                "6b5427f4ebc16db4"
+            ]
+        ]
+    },
+    {
+        "id": "1cfd5d52d0dcee8e",
+        "type": "rbe",
+        "z": "18cc067c93d5298d",
+        "name": "Block Repeat",
+        "func": "rbei",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 730,
+        "y": 320,
+        "wires": [
+            [
+                "962a7a33facbdd7d"
+            ]
+        ]
+    },
+    {
+        "id": "00daccee8e7d8cd4",
+        "type": "trigger",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "op1": "",
+        "op2": "0",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "-1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 870,
+        "y": 120,
+        "wires": [
+            [
+                "d934e0e03f38b7ef"
+            ]
+        ]
+    },
+    {
+        "id": "34a4f7c7d0145883",
+        "type": "trigger",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "op1": "",
+        "op2": "0",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "-10",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 930,
+        "y": 500,
+        "wires": [
+            [
+                "de81ef9403a70c0b"
+            ]
+        ]
+    },
+    {
+        "id": "b49f879606f733ce",
+        "type": "delay",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "30",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 660,
+        "y": 120,
+        "wires": [
+            [
+                "00daccee8e7d8cd4"
+            ]
+        ]
+    },
+    {
+        "id": "a1d2da4705414223",
+        "type": "delay",
+        "z": "18cc067c93d5298d",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 740,
+        "y": 500,
+        "wires": [
+            [
+                "34a4f7c7d0145883"
+            ]
+        ]
+    },
+    {
+        "id": "e5368dcc5ede13ea",
+        "type": "mqtt in",
+        "z": "a19c913059d26c12",
+        "name": "MQTT IN",
+        "topic": "MEDIBOX_DATA",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "e794870d45f595e7",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 460,
+        "wires": [
+            [
+                "b6a5d616964da4b4",
+                "24f5f194584152d9"
+            ]
+        ]
+    },
+    {
+        "id": "a68d34507147ab06",
+        "type": "debug",
+        "z": "a19c913059d26c12",
+        "name": "debug incoming data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "df255071fe64eba9",
+        "type": "ui_gauge",
+        "z": "a19c913059d26c12",
+        "name": "Light Intensity Gauge",
+        "group": "d4ac752d0c0c9669",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Realtime",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#e6e600",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "0.33",
+        "seg2": "0.66",
+        "diff": false,
+        "className": "",
+        "x": 920,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b6a5d616964da4b4",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "max_light()",
+        "func": "let ldr1 = parseFloat(msg.payload[\"LDR1\"]);\nlet ldr2 = parseFloat(msg.payload[\"LDR2\"]);\nlet maxLight;\nlet highLDR;\n\nif (!isNaN(ldr1) && !isNaN(ldr2)) {\n    if (ldr1 > ldr2) {\n        maxLight = ldr1.toFixed(2);\n        highLDR =  'LDR 1';    \n    } else {\n        maxLight = ldr2.toFixed(2);\n        highLDR =  'LDR 2'; \n    }\n    global.set(\"maxLight\",maxLight);\n    global.set(\"highLDR\",highLDR);\n     return { payload: maxLight, high: highLDR };\n} else {\n    return { payload: -1,high: 'No Data!'  };\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 460,
+        "wires": [
+            [
+                "44442ccf5156c666",
+                "296deef73bbaccac"
+            ]
+        ]
+    },
+    {
+        "id": "4f8ab1f08187ebb2",
+        "type": "ui_chart",
+        "z": "a19c913059d26c12",
+        "name": "Light Intensity Plot",
+        "group": "d4ac752d0c0c9669",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Last 15 Minutes",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "15",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b2eba51baa3cfdb7",
+        "type": "ui_toast",
+        "z": "a19c913059d26c12",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "Error Fetching Light Data!",
+        "topic": "",
+        "name": "Error Fetching Light Data!",
+        "x": 930,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "44442ccf5156c666",
+        "type": "switch",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "-1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 670,
+        "y": 460,
+        "wires": [
+            [
+                "b2eba51baa3cfdb7",
+                "a68d34507147ab06"
+            ],
+            [
+                "a68d34507147ab06",
+                "d8883f8100758177",
+                "df255071fe64eba9",
+                "e336e6e2458080db",
+                "4a573097b334002a"
+            ]
+        ]
+    },
+    {
+        "id": "d73d8cba2fccc886",
+        "type": "ui_gauge",
+        "z": "a19c913059d26c12",
+        "name": "Temperature Gauge",
+        "group": "505c7b7f55a8a63e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Realtime",
+        "label": "Celcius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#287be6",
+            "#04e600",
+            "#ca3838"
+        ],
+        "seg1": "26",
+        "seg2": "32",
+        "diff": false,
+        "className": "",
+        "x": 920,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "24f5f194584152d9",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "Temperature()",
+        "func": "\nreturn {payload: parseFloat(msg.payload[\"Temperature\"]).toFixed(2)};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "b60f107bbf6c1a2a"
+            ]
+        ]
+    },
+    {
+        "id": "d8883f8100758177",
+        "type": "delay",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "6",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 890,
+        "y": 100,
+        "wires": [
+            [
+                "4f8ab1f08187ebb2"
+            ]
+        ]
+    },
+    {
+        "id": "815502ea867f531c",
+        "type": "delay",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 890,
+        "y": 220,
+        "wires": [
+            [
+                "a7d9d89f61bf5743"
+            ]
+        ]
+    },
+    {
+        "id": "a7d9d89f61bf5743",
+        "type": "ui_chart",
+        "z": "a19c913059d26c12",
+        "name": "Temperature Plot",
+        "group": "505c7b7f55a8a63e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Last Hour",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b60f107bbf6c1a2a",
+        "type": "switch",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 690,
+        "y": 180,
+        "wires": [
+            [
+                "d73d8cba2fccc886",
+                "815502ea867f531c"
+            ],
+            [
+                "4ad7a43e7022c70f"
+            ]
+        ]
+    },
+    {
+        "id": "4ad7a43e7022c70f",
+        "type": "ui_toast",
+        "z": "a19c913059d26c12",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "Error Fetching Temperature Data!",
+        "topic": "",
+        "name": "Error Fetching Temperature Data!",
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "296deef73bbaccac",
+        "type": "ui_text",
+        "z": "a19c913059d26c12",
+        "group": "d4ac752d0c0c9669",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Source : ",
+        "format": "{{msg.high}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 880,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d0bfe8e9a4632e6f",
+        "type": "ui_slider",
+        "z": "a19c913059d26c12",
+        "name": "Min Angle Slider",
+        "label": "Minimum Angle",
+        "tooltip": "",
+        "group": "59cb6c35f86cce23",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "120",
+        "step": "1",
+        "className": "",
+        "x": 480,
+        "y": 740,
+        "wires": [
+            [
+                "b8b526e9b878aacd"
+            ]
+        ]
+    },
+    {
+        "id": "baad43a38ba6cb22",
+        "type": "ui_slider",
+        "z": "a19c913059d26c12",
+        "name": "Control Factor Slider",
+        "label": "Control Factor",
+        "tooltip": "",
+        "group": "59cb6c35f86cce23",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "1",
+        "step": "0.01",
+        "className": "",
+        "x": 480,
+        "y": 820,
+        "wires": [
+            [
+                "ea858ac9b024f625"
+            ]
+        ]
+    },
+    {
+        "id": "037c9e2906ea5111",
+        "type": "mqtt out",
+        "z": "a19c913059d26c12",
+        "name": "MQTT OUT",
+        "topic": "MEDIBOX_MOTOR_DATA",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e794870d45f595e7",
+        "x": 1270,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "9e4965a10c28b0c8",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "calculateAngle()",
+        "func": "let minAngle = parseFloat(flow.get(\"minAngle\"));\nlet controlFactor = parseFloat(flow.get(\"controlFactor\"));\nlet maxLight = parseFloat(global.get(\"maxLight\"));\nlet higherLDR = global.get(\"highLDR\");\nlet constD;\nlet angle;\n\nif (higherLDR === \"LDR 1\"){\n        constD = 1.5;\n    }\nelse{\n        constD = 0.5;\n    }\nangle = Math.round(Math.min(minAngle*constD+(180-minAngle)*maxLight*controlFactor,180));\nreturn {payload:angle};\n// return {a:minAngle,b:controlFactor,c:medicineType,d:maxLight,e:higherLDR,f:angle,g:constD}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 820,
+        "wires": [
+            [
+                "ccf14d9e22022c94"
+            ]
+        ]
+    },
+    {
+        "id": "ba4404712514014b",
+        "type": "ui_dropdown",
+        "z": "a19c913059d26c12",
+        "name": "Medicine Type Dropdown",
+        "label": "Select the Medicine Type",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "59cb6c35f86cce23",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Custom",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "Type A",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "Type B",
+                "value": 3,
+                "type": "num"
+            },
+            {
+                "label": "Type C",
+                "value": 4,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 430,
+        "y": 900,
+        "wires": [
+            [
+                "8e0750dc85adab01"
+            ]
+        ]
+    },
+    {
+        "id": "687b7ab77c6bb377",
+        "type": "debug",
+        "z": "a19c913059d26c12",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "1f0bf956275a3cf5",
+        "type": "trigger",
+        "z": "a19c913059d26c12",
+        "name": "Default Starting Parameters Trigger",
+        "op1": "{\"minAngle\":30,\"controlFactor\":0.75,\"medicineType\":1}",
+        "op2": "0",
+        "op1type": "json",
+        "op2type": "str",
+        "duration": "0",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 220,
+        "y": 620,
+        "wires": [
+            [
+                "dc6b36a2236d54ec",
+                "2fc05403de7e0aaf",
+                "7bee60d77598841d"
+            ]
+        ],
+        "info": "Sends degault values and triggers starting of sending angles to the medibox.\r\nThis trigger activates when the light data is ready."
+    },
+    {
+        "id": "dc6b36a2236d54ec",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "filterMinAngle()",
+        "func": "return { payload: msg.payload[\"minAngle\"] };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 740,
+        "wires": [
+            [
+                "d0bfe8e9a4632e6f"
+            ]
+        ]
+    },
+    {
+        "id": "2fc05403de7e0aaf",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "filterControlFactor()",
+        "func": "\nreturn {payload:msg.payload[\"controlFactor\"]};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 820,
+        "wires": [
+            [
+                "baad43a38ba6cb22"
+            ]
+        ]
+    },
+    {
+        "id": "7bee60d77598841d",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "filterMedType()",
+        "func": "return {payload: msg.payload[\"medicineType\"]};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 900,
+        "wires": [
+            [
+                "ba4404712514014b"
+            ]
+        ]
+    },
+    {
+        "id": "b8b526e9b878aacd",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "helper()",
+        "func": "flow.set(\"minAngle\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 740,
+        "wires": [
+            [
+                "9e4965a10c28b0c8",
+                "5064a0b1acf82907"
+            ]
+        ]
+    },
+    {
+        "id": "ea858ac9b024f625",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "helper()",
+        "func": "flow.set(\"controlFactor\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 820,
+        "wires": [
+            [
+                "9e4965a10c28b0c8",
+                "5064a0b1acf82907"
+            ]
+        ]
+    },
+    {
+        "id": "74b358788ae859ef",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "Update Sliders()",
+        "func": "flow.set(\"medicineType\",msg.payload);\nlet defMedData = flow.get(\"defMedConfig\");\nlet minAngle;\nlet controlFactor;\n\nif (msg.payload ===2){\n    minAngle = defMedData[\"A\"][\"minAngle\"];\n    controlFactor =  defMedData[\"A\"][\"controlFactor\"];\n}\nelse if (msg.payload ===3){\n    minAngle =  defMedData[\"B\"][\"minAngle\"];\n    controlFactor = defMedData[\"B\"][\"controlFactor\"];\n}\nelse{\n    minAngle = defMedData[\"C\"][\"minAngle\"];\n    controlFactor = defMedData[\"C\"][\"controlFactor\"];\n}\nreturn {payload:{\"minAngle\": minAngle, \"controlFactor\": controlFactor}};\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 900,
+        "wires": [
+            [
+                "2fc05403de7e0aaf",
+                "dc6b36a2236d54ec"
+            ]
+        ]
+    },
+    {
+        "id": "4a573097b334002a",
+        "type": "rbe",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "func": "deadbandEq",
+        "gap": "5%",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 720,
+        "y": 600,
+        "wires": [
+            [
+                "9e4965a10c28b0c8"
+            ]
+        ]
+    },
+    {
+        "id": "ccf14d9e22022c94",
+        "type": "rbe",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "func": "deadbandEq",
+        "gap": "10",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1100,
+        "y": 820,
+        "wires": [
+            [
+                "037c9e2906ea5111",
+                "687b7ab77c6bb377"
+            ]
+        ]
+    },
+    {
+        "id": "ca847f270f002708",
+        "type": "switch",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 750,
+        "y": 900,
+        "wires": [
+            [
+                "74b358788ae859ef"
+            ]
+        ]
+    },
+    {
+        "id": "8e0750dc85adab01",
+        "type": "rbe",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 610,
+        "y": 900,
+        "wires": [
+            [
+                "ca847f270f002708"
+            ]
+        ]
+    },
+    {
+        "id": "e336e6e2458080db",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "defMedConfig()",
+        "func": "return msg;\n\n/*This function (On start tab) contains the default values \nfor the parameters \"controlFactor\" and \"minAngle\" for three medicine presets.\nIt sets them as flow variables on start.\nThis is required for updating the UI when ever a preset medicine isselected in the\ndrop down, but user changes a slider to a non preset configuration.\n(Otherwise their will be infinity loop of updating\nthe sliders and the dropdown.)*/",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nflow.set(\"defMedConfig\", {A: { minAngle: 0, controlFactor: 0.1 }, B: { minAngle: 45, controlFactor: 0.5 }, C: { minAngle: 20, controlFactor: 1 }});",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 540,
+        "wires": [
+            [
+                "1f0bf956275a3cf5"
+            ]
+        ]
+    },
+    {
+        "id": "5064a0b1acf82907",
+        "type": "function",
+        "z": "a19c913059d26c12",
+        "name": "resetDropdowmToCustom()",
+        "func": "let defMedData = flow.get(\"defMedConfig\");\nlet currentMA= flow.get(\"minAngle\");\nlet currentCF = flow.get(\"controlFactor\");\n\nlet isNotA = (currentCF != defMedData[\"A\"][\"controlFactor\"] || currentMA != defMedData[\"A\"][\"minAngle\"]);\nlet isNotB = (currentCF != defMedData[\"B\"][\"controlFactor\"] || currentMA != defMedData[\"B\"][\"minAngle\"]);\nlet isNotC = (currentCF != defMedData[\"C\"][\"controlFactor\"] || currentMA != defMedData[\"C\"][\"minAngle\"]);\n\nif (isNotA && isNotB && isNotC){\n    return {payload:1};\n}\nelse{\n    return {payload:\"block\"};\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 1060,
+        "wires": [
+            [
+                "bb395fb50ab1a568"
+            ]
+        ]
+    },
+    {
+        "id": "bb395fb50ab1a568",
+        "type": "switch",
+        "z": "a19c913059d26c12",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "block",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 980,
+        "wires": [
+            [
+                "ba4404712514014b"
+            ]
+        ]
+    }
+]

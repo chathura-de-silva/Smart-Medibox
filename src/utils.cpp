@@ -1,12 +1,15 @@
 #include <Globals.h>
 #include <Functions.h>
 #include <Constants.h>
+#include <Servo.h>
 
 int current_mode = 0;
 const int max_modes = 7;
 const String modes[] = {"Set Alarm 1", "Set Alarm 2", "Set Alarm 3", "Disable Alarms", "Set Time Zone", "Configure Wifi", "Reset Settings"};
+int servo_angle;//-1 does not occur as a servo angle. Hence used to check if the servo angle is set or not.
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+Servo servo_motor;
 
 String formatNumber(int num)
 { // formats a given number to have two digits if its between 0 and 9.
@@ -190,4 +193,19 @@ void show_modal_page(const unsigned char *bitmap, int period, String text, int x
     {
         delay(period);
     }
+}
+
+void turn_servo_motor(int angle)
+{
+    if (servo_angle != angle)
+    {
+        servo_motor.write(angle); // Servo motor can only turn between 0 and 180 degrees.
+        delay(20);
+        Serial.println("Slider turned by an angle of: " + String(angle) + " degrees.");
+        servo_angle = angle;
+    }
+    else{
+        Serial.println("Slider already at the desired angle.");
+    }
+    
 }
