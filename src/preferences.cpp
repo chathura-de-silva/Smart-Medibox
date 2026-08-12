@@ -10,9 +10,9 @@ void load_user_settings()
     preferences.begin("settings", true);
     for (int i = 0; i < n_alarms; i++)
     {
-        alarm_hours[i] = preferences.getInt("alarm_hours_" + i, 0); // Default(when no data in EEPROM) alarm time is 00:00. But will not trigger until user sets, since alarm_triggered is false.
-        alarm_minutes[i] = preferences.getInt("alarm_minutes_" + i, 00);
-        alarm_triggered[i] = preferences.getBool("alarm_triggered_" + i, false);
+        alarm_hours[i] = preferences.getInt((String("alarm_hours_") + String(i)).c_str(), 0); // Default(when no data in EEPROM) alarm time is 00:00. But will not trigger until user sets, since alarm_triggered is false.
+        alarm_minutes[i] = preferences.getInt((String("alarm_minutes_") + String(i)).c_str(), 00);
+        alarm_triggered[i] = preferences.getBool((String("alarm_triggered_") + String(i)).c_str(), false);
     }
     alarm_enabled = preferences.getBool("alarm_enabled", false);
     temp_offset_hours = preferences.getInt("utc_offset_h", DEFAULT_UTC_OFFSET_H);
@@ -25,9 +25,9 @@ void load_user_settings()
 void save_alarm(int alarm)
 {
     preferences.begin("settings", false);
-    preferences.putInt("alarm_hours_" + alarm, alarm_hours[alarm]);
-    preferences.putInt("alarm_minutes_" + alarm, alarm_minutes[alarm]);
-    preferences.putBool("alarm_triggered_" + alarm, alarm_triggered[alarm]);
+    preferences.putInt((String("alarm_hours_") + String(alarm)).c_str(), alarm_hours[alarm]);
+    preferences.putInt((String("alarm_minutes_") + String(alarm)).c_str(), alarm_minutes[alarm]);
+    preferences.putBool((String("alarm_triggered_") + String(alarm)).c_str(), alarm_triggered[alarm]);
     preferences.end();
 }
 
